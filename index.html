@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>News Portal</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          crossorigin="anonymous"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7">
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="application.js"></script>
+</head>
+
+<body>
+<div class="news_grid">
+    <div class="col-md-12 custom_border news_block">
+        <!--TODO: Check if no empty-->
+        <div class="image_container">
+            <div class="custom_border">
+                <!--TODO: Paste source here-->
+                <img src="" class="news_image"/>
+            </div>
+        </div>
+        <div>
+            <div class="pull-right">
+                <span class="glyphicon glyphicon-remove news_delete"></span>
+                <span class="glyphicon glyphicon-pencil news_edit"></span>
+            </div>
+
+            <div class="news_title">
+            </div>
+
+            <div class="brief_description">
+                <!--TODO: Paste brief_description here-->
+            </div>
+            <div class="description display_none" style="display: none">
+                <!--TODO: Paste description here-->
+            </div>
+            <!--TODO: Check if no empty-->
+            <div class="col-md-3">
+                <a data-expand_text="${newsExpand}" data-close_text="${newsClose}"
+                   data-id="${current.newsId}" class="expand_news details" href="#">
+                    <span id="toggle_text_${current.newsId}" data-id="${current.newsId}"><!--TODO: Add flip functionality--></span>
+                    <span id="operation_${current.newsId}" data-id="${current.newsId}"
+                          class="glyphicon glyphicon-hand-down"></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="pull-right signature_row">
+            <div class="col-md-4"><!--TODO: Paste author here--></div>
+            <div class="col-md-4"><!--TODO: Paste time here--></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

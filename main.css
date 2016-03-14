@@ -1,0 +1,26 @@
+body{
+    background-color: #f4f5f5;
+    width: 90%;
+    margin: auto;
+}
+
+.image_container{
+    float: left;
+    padding: 0 15px 15px 0;
+}
+
+.custom_border{
+    border: 5px solid #E6E6E6;
+    border-radius: 10px;
+}
+
+.news_block{
+    padding:10px;
+    margin: 0 0 10px 0;
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+
+.news_title{
+    font-size:24px;
+}
