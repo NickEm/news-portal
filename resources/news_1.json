@@ -1,0 +1,10 @@
+{
+  "news_id":1,
+  "type":"general",
+  "title":"Something about wolfs",
+  "brief_description":"Here is something about wolfs",
+  "description":"The Arctic wolf (Canis lupus arctos), also known as the Melville Island wolf is a possible subspecies of gray wolf native to the Canadian Arctic Archipelago, from Melville Island to Ellesmere Island. It is a medium-sized subspecies, distinguished from the northwestern wolf by its smaller size, its whiter coloration, its narrower braincase, and larger carnassials. Since 1930, there has been a progressive reduction in size in Arctic wolf skulls, which is likely the result of wolf-dog hybridization",
+  "author":"Nick Еm",
+  "created_date":"2016-03-15 17:00:00",
+  "image":"resources/wolf_1.jpg"
+}
