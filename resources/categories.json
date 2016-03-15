@@ -1,8 +1,7 @@
 [
-  {"name": "general"},
-  {"name": "nature"},
-  {"name": "economic"},
-  {"name": "science"},
-  {"name": "politics"},
-  {"name": "charity"}
+  {"url": "nature.html", "name":"Nature"},
+  {"url": "economic.html", "name":"Economic"},
+  {"url": "science.html", "name":"Science"},
+  {"url": "politic.html", "name":"Politic"},
+  {"url": "charity.html", "name":"Charity"}
 ]

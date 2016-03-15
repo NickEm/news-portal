@@ -1,7 +1,18 @@
 body{
-    background-color: #f4f5f5;
+    background-image: url("resources/background_2.jpg");
     width: 800px;
     margin: auto;
+}
+
+.header{
+    height: 150px;
+    line-height: 150px;
+    margin: 10px 0 10px 0;
+    text-align: center;
+    font-size: 75px;
+    font-style: italic;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color:#FFFFFF;
 }
 
 .image_container{
@@ -16,7 +27,7 @@ body{
 
 .news_block{
     padding: 10px;
-    margin: 0 0 10px 0;
+    margin: 10px 0 0 0;
     background-color: #FFFFFF;
     overflow: hidden;
 }

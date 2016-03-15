@@ -7,7 +7,8 @@
     "author": "Nick Еm",
     "created_date": "2016-03-15 17:00",
     "image": "resources/wolf_1.jpg"
-  },{
+  },
+  {
     "news_id": 2,
     "type": "nature",
     "title": "Something about pandas",
@@ -15,5 +16,23 @@
     "author": "Jessica Miles",
     "created_date": "2016-03-15 18:00",
     "image": "resources/panda_1.jpg"
+  },
+  {
+    "news_id": 3,
+    "type": "nature",
+    "title": "Something about koalas",
+    "brief_description": "Here is something about koalas",
+    "author": "Jack Daniels",
+    "created_date": "2016-03-15 19:00",
+    "image": "resources/koala_1.jpg"
+  },
+  {
+    "news_id": 4,
+    "type": "nature",
+    "title": "Something about horses",
+    "brief_description": "Here is something about horses",
+    "author": "William Lawson",
+    "created_date": "2016-03-15 20:00",
+    "image": "resources/horse_1.jpg"
   }
 ]
