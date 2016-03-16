@@ -1,0 +1,38 @@
+[
+  {
+    "news_id": 1,
+    "type": "nature",
+    "title": "Something about wolfs",
+    "description": "The Arctic wolf (Canis lupus arctos), also known as the Melville Island wolf is a possible subspecies of gray wolf native to the Canadian Arctic Archipelago, from Melville Island to Ellesmere Island. It is a medium-sized subspecies, distinguished from the northwestern wolf by its smaller size, its whiter coloration, its narrower braincase, and larger carnassials. Since 1930, there has been a progressive reduction in size in Arctic wolf skulls, which is likely the result of wolf-dog hybridization.",
+    "author": "Nick Еm",
+    "created_date": "2016-03-15 17:00",
+    "image": "resources/wolf_1.jpg"
+  },
+  {
+    "news_id": 2,
+    "type": "nature",
+    "title": "Something about pandas",
+    "description": "The giant panda (Ailuropoda melanoleuca, 'black and white cat-foot', 'big bear cat'), also known as panda bear or simply panda, is a bear native to south central China. It is easily recognized by the large, distinctive black patches around its eyes, over the ears, and across its round body. The name 'giant panda' is sometimes used to distinguish it from the unrelated red panda. Though it belongs to the order Carnivora, the giant panda's diet is over 99% bamboo. Giant pandas in the wild will occasionally eat other grasses, wild tubers, or even meat in the form of birds, rodents or carrion. In captivity, they may receive honey, eggs, fish, yams, shrub leaves, oranges, or bananas along with specially prepared food.",
+    "author": "Jessica Miles",
+    "created_date": "2016-03-15 18:00",
+    "image": "resources/panda_1.jpg"
+  },
+  {
+    "news_id": 3,
+    "type": "nature",
+    "title": "Something about koalas",
+    "description": "The koala (Phascolarctos cinereus, or, inaccurately, koala bear) is an arboreal herbivorous marsupial native to Australia. It is the only extant representative of the family Phascolarctidae and its closest living relatives are the wombats. The koala is found in coastal areas of the mainland's eastern and southern regions, inhabiting Queensland, New South Wales, Victoria, and South Australia. It is easily recognisable by its stout, tailless body and large head with round, fluffy ears and large, spoon-shaped nose. The koala has a body length of 60–85 cm (24–33 in) and weighs 4–15 kg (9–33 lb). Pelage colour ranges from silver grey to chocolate brown. Koalas from the northern populations are typically smaller and lighter in colour than their counterparts further south. These populations possibly are separate subspecies, but this is disputed.",
+    "author": "Jack Daniels",
+    "created_date": "2016-03-15 19:00",
+    "image": "resources/koala_1.jpg"
+  },
+  {
+    "news_id": 4,
+    "type": "nature",
+    "title": "Something about horses",
+    "description": "The horse (Equus ferus caballus) is one of two extant subspecies of Equus ferus. It is an odd-toed ungulate mammal belonging to the taxonomic family Equidae. The horse has evolved over the past 45 to 55 million years from a small multi-toed creature, Hyracotherium, into the large, single-toed animal of today. Humans began to domesticate horses around 4000 BC, and their domestication is believed to have been widespread by 3000 BC. Horses in the subspecies caballus are domesticated, although some domesticated populations live in the wild as feral horses. These feral populations are not true wild horses, as this term is used to describe horses that have never been domesticated, such as the endangered Przewalski's horse, a separate subspecies, and the only remaining true wild horse. There is an extensive, specialized vocabulary used to describe equine-related concepts, covering everything from anatomy to life stages, size, colors, markings, breeds, locomotion, and behavior.",
+    "author": "William Lawson",
+    "created_date": "2016-03-15 20:00",
+    "image": "resources/horse_1.jpg"
+  }
+]

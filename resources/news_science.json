@@ -1,0 +1,20 @@
+[
+  {
+    "news_id": 5,
+    "type": "science",
+    "title": "Human genome",
+    "description": "The human genome is the complete set of nucleic acid sequence for humans (Homo sapiens), encoded as DNA within the 23 chromosome pairs in cell nuclei and in a small DNA molecule found within individual mitochondria. Human genomes include both protein-coding DNA genes and noncoding DNA. Haploid human genomes, which are contained in germ cells (the egg and sperm gamete cells created in the meiosis phase of sexual reproduction before fertilization creates a zygote) consist of three billion DNA base pairs, while diploid genomes (found in somatic cells) have twice the DNA content. While there are significant differences among the genomes of human individuals (on the order of 0.1%), these are considerably smaller than the differences between humans and their closest living relatives, the chimpanzees (approximately 4%) and bonobos.",
+    "author": "Nick Еm",
+    "created_date": "2016-03-16 17:00",
+    "image": "resources/human_genome.jpg"
+  },
+  {
+    "news_id": 6,
+    "type": "science",
+    "title": "Higgs boson",
+    "description": "The Higgs boson is an elementary particle in the Standard Model of particle physics. It is the quantum excitation of the Higgs field-a fundamental field of crucial importance to particle physics theory, first suspected to exist in the 1960s, which, unlike other known fields such as the electromagnetic field, takes a non-zero constant value almost everywhere. The question of the Higgs field's existence has been the last unverified part of the Standard Model of particle physics and, according to some, 'the central problem in particle physics'. The presence of this field, now believed to be confirmed, explains why some fundamental particles have mass when, based on the symmetries controlling their interactions, they should be massless. The existence of the Higgs field would also resolve several other long-standing puzzles, such as the reason for the weak force's extremely short range.",
+    "author": "Chris Brown",
+    "created_date": "2016-03-16 18:00",
+    "image": "resources/higgs_boson.jpg"
+  }
+]
