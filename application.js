@@ -56,30 +56,28 @@ $(document).ready(function () {
 
     //To highlight menu navigation buttons on click
     var addRoutingListeners = function () {
-        $(".btn").each(function () {
-            $(this).click(function () {
-                $(".btn").removeClass("active");
-                $(this).addClass("active");
-                var category = $(this).attr("id");
-                var categoryUrl = "";
-                switch (category) {
-                    case "Nature":
-                        categoryUrl = "resources/news_nature.json";
-                        break;
-                    case "Science":
-                        categoryUrl = "resources/news_science.json";
-                        break;
-                    //TODO: In the same case can be implemented other category
-                }
-                loadNews(categoryUrl);
-            })
+        $('#category_grid').on('click', '.btn-menu', function () {
+            $(".btn-menu").removeClass("active");
+            $(this).addClass("active");
+            var category = $(this).attr("id");
+            var categoryUrl = "";
+            switch (category) {
+                case "Nature":
+                    categoryUrl = "resources/news_nature.json";
+                    break;
+                case "Science":
+                    categoryUrl = "resources/news_science.json";
+                    break;
+                //TODO: In the same case can be implemented other category
+            }
+            loadNews(categoryUrl);
         });
     };
 
     var categoryItem = function(name) {
         this.name = name;
         this.pureHtml = function() {
-            return '<a id="' + this.name + '" class="btn btn-default btn-lg" href="#' + this.name + '" >' + this.name + '</a>';
+            return '<a id="' + this.name + '" class="btn btn-default btn-lg btn-menu" href="#' + this.name + '" >' + this.name + '</a>';
         };
     };
 
@@ -104,6 +102,7 @@ $(document).ready(function () {
         var initialCategory = '#Nature';
         $(initialCategory).addClass("active");
         //Change navigation url to the first menu tab
+        /*history.pushState(null, '', initialCategory);*/
         history.pushState(null, '', initialCategory);
         addRoutingListeners();
     };
