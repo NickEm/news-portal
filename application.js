@@ -1,13 +1,15 @@
 $(document).ready(function () {
 
-    var newsItem = function(title, description, author, createdDate, image) {
+    var newsItem = function(news_id, title, description, author, createdDate, image, video) {
         this.title = title;
+        this.newsId = news_id;
         this.description = description;
         this.author = author;
         this.createdDate = createdDate;
         this.image = image;
+        this.video = video;
         this.pureHtml = function() {
-            return '<div class="col-md-12 custom_border news_block">' +
+            var basicBlock = '<div class="col-md-12 custom_border news_block">' +
                 '<div class="image_container">' +
                 '<div class="custom_border">' +
                 '<img src="'+ this.image +'" class="news_image"/>' +
@@ -16,14 +18,25 @@ $(document).ready(function () {
                 '<div class="pull-right">' +
                 '<span class="glyphicon glyphicon-remove news_delete"></span>' +
                 '<span class="glyphicon glyphicon-pencil news_edit"></span>' +
-                '</div>' +
-                '<h3>' + this.title + '</h3>' +
-                '<div class="description">' + this.description + '</div>' +
-                '<div class="pull-right">' +
+                '</div>';
+            var titleBlock = '';
+            var videoBlock = '';
+            if(video) {
+                titleBlock = '<h3>' + this.title + '</h3>';
+                videoBlock = '<video width="100%" controls>' +
+                    '<source src="' + this.video + '" type="video/mp4">' +
+                    '</video>';
+            } else {
+                titleBlock = '<h3>' + '<a id="' + this.newsId + '" href="#" >' + this.title + '</a>' + '</h3>';
+            }
+            var descriptionBlock = '<div class="description">' + this.description + '</div>';
+            var closureBlock = '<div class="pull-right">' +
                 '<div class="col-md-6">' + this.author + '</div>' +
                 '<div class="col-md-6">' + this.createdDate + '</div>' +
                 '</div>' +
                 '</div>';
+
+            return basicBlock + titleBlock + descriptionBlock + videoBlock + closureBlock;
         };
     };
 
@@ -48,9 +61,27 @@ $(document).ready(function () {
 
     var updateNews = function (data) {
         clearNews();
-        data.forEach(function (item, idx) {
-            var news = new newsItem(item.title, item.description, item.author, item.created_date, item.image);
-            $('#news_grid').append(news.pureHtml());
+        if(data instanceof Array) {
+            data.forEach(function (item, idx) {
+                appendNews(item);
+            });
+        } else {
+            appendNews(data);
+        }
+        addExpandNewsListeners();
+    };
+
+    var appendNews = function (item) {
+        var news = new newsItem(item.news_id, item.title, item.description, item.author, item.created_date, item.image, item.video);
+        $('#news_grid').append(news.pureHtml());
+    };
+
+    var addExpandNewsListeners = function () {
+        $('.news_block').on('click', 'a', function () {
+            var newsId = $(this).attr("id");
+            //TODO: In the same case can be implemented expanding of each news. Just particular json should exist.
+            var newsUrl = "resources/news_" + newsId + ".json";
+            loadNews(newsUrl);
         });
     };
 
@@ -62,22 +93,23 @@ $(document).ready(function () {
             var category = $(this).attr("id");
             var categoryUrl = "";
             switch (category) {
-                case "Nature":
+                case "category_1":
                     categoryUrl = "resources/news_nature.json";
                     break;
-                case "Science":
+                case "category_2":
                     categoryUrl = "resources/news_science.json";
                     break;
-                //TODO: In the same case can be implemented other category
+                //TODO: In the same case can be implemented other category. Just particular json should exist.
             }
             loadNews(categoryUrl);
         });
     };
 
-    var categoryItem = function(name) {
+    var categoryItem = function(categoryId, name) {
+        this.categoryId = categoryId;
         this.name = name;
         this.pureHtml = function() {
-            return '<a id="' + this.name + '" class="btn btn-default btn-lg btn-menu" href="#' + this.name + '" >' + this.name + '</a>';
+            return '<a id="category_' + this.categoryId + '" class="btn btn-default btn-lg btn-menu" href="#" >' + this.name + '</a>';
         };
     };
 
@@ -94,27 +126,17 @@ $(document).ready(function () {
 
     var updateCategories = function (data) {
         data.forEach(function (item) {
-            var category = new categoryItem(item.name);
+            var category = new categoryItem(item.category_id, item.name);
             $('#category_grid').append(category.pureHtml());
         });
 
         //Highlight first menu tab
-        var initialCategory = '#Nature';
-        $(initialCategory).addClass("active");
-        //Change navigation url to the first menu tab
-        /*history.pushState(null, '', initialCategory);*/
-        history.pushState(null, '', initialCategory);
+        $('#category_1').addClass("active");
         addRoutingListeners();
     };
 
     loadCategories();
 
     loadNews("resources/news_nature.json");
-
-    //TODO: Difference for listeners.
-    //TODO: Add routing to particular news.
-    //TODO: Add media.
-    //TODO: Add image expanding.
-    //TODO: Implement on node server.
 
 });
