@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+
     var newsItem = function(news_id, title, description, author, createdDate, image, video) {
         this.title = title;
         this.newsId = news_id;
@@ -16,8 +20,12 @@ $(document).ready(function () {
                 '</div>' +
                 '</div>' +
                 '<div class="pull-right">' +
-                '<span class="glyphicon glyphicon-remove news_delete"></span>' +
-                '<span class="glyphicon glyphicon-pencil news_edit"></span>' +
+                '<div>' +
+                '<a href="#" data-toggle="tooltip" data-placement="left" title="Remove news"><span class="glyphicon glyphicon-remove news_delete"></span></a>' +
+                '</div>' +
+                '<div>' +
+                '<a href="#" data-toggle="tooltip" data-placement="left" title="Edit news"><span class="glyphicon glyphicon-pencil news_edit"></span></a>' +
+                '</div>' +
                 '</div>';
             var titleBlock = '';
             var videoBlock = '';
@@ -30,9 +38,9 @@ $(document).ready(function () {
                 titleBlock = '<h3>' + '<a id="' + this.newsId + '" href="#" >' + this.title + '</a>' + '</h3>';
             }
             var descriptionBlock = '<div class="description">' + this.description + '</div>';
-            var closureBlock = '<div class="pull-right">' +
-                '<div class="col-md-6">' + this.author + '</div>' +
-                '<div class="col-md-6">' + this.createdDate + '</div>' +
+            var closureBlock = '<div class="row">' +
+                '<div class="col-md-3 col-md-offset-6">' + this.author + '</div>' +
+                '<div class="col-md-3">' + this.createdDate + '</div>' +
                 '</div>' +
                 '</div>';
 
@@ -69,6 +77,9 @@ $(document).ready(function () {
             appendNews(data);
         }
         addExpandNewsListeners();
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
     };
 
     var appendNews = function (item) {
