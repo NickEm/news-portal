@@ -11,3 +11,6 @@
 
 Bootstrap JS
 1. Tooltip
+2. Carousel
+3. --- Modal
+4. --- Tab

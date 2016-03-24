@@ -1,22 +1,19 @@
 $(document).ready(function () {
 
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    });
-
-    var newsItem = function(news_id, title, description, author, createdDate, image, video) {
+    var newsItem = function(news_id, title, description, author, createdDate, main_image, video, images, selected) {
         this.title = title;
         this.newsId = news_id;
         this.description = description;
         this.author = author;
         this.createdDate = createdDate;
-        this.image = image;
+        this.mainImage = main_image;
         this.video = video;
+        this.images = images;
         this.pureHtml = function() {
             var basicBlock = '<div class="col-md-12 custom_border news_block">' +
                 '<div class="image_container">' +
                 '<div class="custom_border">' +
-                '<img src="'+ this.image +'" class="news_image"/>' +
+                '<img src="'+ this.mainImage +'" class="news_image"/>' +
                 '</div>' +
                 '</div>' +
                 '<div class="pull-right">' +
@@ -24,16 +21,20 @@ $(document).ready(function () {
                 '<a href="#" data-toggle="tooltip" data-placement="left" title="Remove news"><span class="glyphicon glyphicon-remove news_delete"></span></a>' +
                 '</div>' +
                 '<div>' +
-                '<a href="#" data-toggle="tooltip" data-placement="left" title="Edit news"><span class="glyphicon glyphicon-pencil news_edit"></span></a>' +
+                '<a href="#" data-toggle="modal" data-target="#editModal_' + this.newsId +'">'+
+                '<span class="glyphicon glyphicon-pencil news_edit" data-toggle="tooltip" data-placement="left" title="Edit news"></span></a>' +
                 '</div>' +
                 '</div>';
             var titleBlock = '';
             var videoBlock = '';
-            if(video) {
+            if(selected) {
                 titleBlock = '<h3>' + this.title + '</h3>';
-                videoBlock = '<video width="100%" controls>' +
-                    '<source src="' + this.video + '" type="video/mp4">' +
-                    '</video>';
+                if(video) {
+                    videoBlock = '<div><div class="video_container">' +
+                        '<video width="100%" controls>' +
+                        '<source src="' + this.video + '" type="video/mp4">' +
+                        '</video></div></div>';
+                }
             } else {
                 titleBlock = '<h3>' + '<a id="' + this.newsId + '" href="#" >' + this.title + '</a>' + '</h3>';
             }
@@ -71,19 +72,19 @@ $(document).ready(function () {
         clearNews();
         if(data instanceof Array) {
             data.forEach(function (item, idx) {
-                appendNews(item);
+                appendNews(item, false);
             });
         } else {
-            appendNews(data);
+            appendNews(data, true);
         }
         addExpandNewsListeners();
         $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
+            $('[data-toggle="tooltip"]').tooltip();
         });
     };
 
-    var appendNews = function (item) {
-        var news = new newsItem(item.news_id, item.title, item.description, item.author, item.created_date, item.image, item.video);
+    var appendNews = function (item, selected) {
+        var news = new newsItem(item.news_id, item.title, item.description, item.author, item.created_date, item.main_image, item.video, item.images, selected);
         $('#news_grid').append(news.pureHtml());
     };
 

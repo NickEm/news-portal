@@ -6,5 +6,19 @@
   "author": "Nick Еm",
   "video": "resources/cute_wolf_puppy.mp4",
   "created_date": "2016-03-15 17:00",
-  "image": "resources/wolf_1.jpg"
+  "main_image": "resources/wolf_1.jpg",
+  "images": [
+    {
+      "image_url": "resources/wolves/wolf_4.jpg"
+    },
+    {
+      "image_url": "resources/wolves/wolf_5.jpg"
+    },
+    {
+      "image_url": "resources/wolves/wolf_6.jpg"
+    },
+    {
+      "image_url": "resources/wolves/wolf_7.jpg"
+    }
+  ]
 }

@@ -20,6 +20,10 @@ body{
     padding: 0 15px 15px 0;
 }
 
+.video_container{
+    padding: 15px 0 15px 0;
+}
+
 .custom_border{
     border: 5px solid #E6E6E6;
     border-radius: 10px;
