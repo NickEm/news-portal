@@ -1,6 +1,6 @@
 body{
     background-image: url("resources/background_2.jpg");
-    width: 800px;
+    /*width: 800px;*/
     margin: auto;
 }
 
@@ -42,4 +42,8 @@ body{
 
 .description{
     //TODO: implement something
+}
+
+.centered {
+    text-align: center;
 }

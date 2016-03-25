@@ -15,6 +15,6 @@ Bootstrap JS
 3. --- Modal
 4. Tab
 5. --- Collapse
-6. --- Popover (For author)
+6. Popover
 7. --- Alert
 8. --- Dropdown

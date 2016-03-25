@@ -1,6 +1,22 @@
 $(document).ready(function () {
 
-    var newsItem = function(news_id, title, description, author, createdDate, main_image, video, images, selected) {
+    var news;
+    var categories = [];
+
+    $('#editNewsModal').on('show.bs.modal', function(e) {
+        /*var bookId = $(e.relatedTarget).data('book-id');*/
+        var categoriesBlock ='';
+        categories.forEach(function (item) {
+            categoriesBlock += '<option>' + item.name+ '</option>';
+        });
+        $(e.currentTarget).find('#categories').append(categoriesBlock);
+        $(e.currentTarget).find('#edit_title').val(news.title);
+        $(e.currentTarget).find('#edit_description').val(news.description);
+        $(e.currentTarget).find('#edit_author').val(news.author.name);
+        $(e.currentTarget).find('#edit_video_url').val(news.video);
+    });
+
+    var selectedNewsItem = function(news_id, title, description, author, createdDate, main_image, video, images) {
         this.title = title;
         this.newsId = news_id;
         this.description = description;
@@ -10,51 +26,74 @@ $(document).ready(function () {
         this.video = video;
         this.images = images;
         this.pureHtml = function() {
-            var basicBlock = '<div class="image_container">' +
-                '<div class="custom_border">' +
-                '<img src="'+ this.mainImage +'" class="news_image"/>' +
-                '</div>' +
+            news = this;
+            var basicBlock =
+                '<div class="image_container">' +
+                    '<div class="custom_border"><img src="'+ this.mainImage +'" class="img-responsive" width="320" height="180"/></div>' +
                 '</div>' +
                 '<div class="pull-right">' +
-                '<div>' +
-                '<a href="#" data-toggle="tooltip" data-placement="left" title="Remove news"><span class="glyphicon glyphicon-remove news_delete"></span></a>' +
-                '</div>' +
-                '<div>' +
-                '<a href="#" data-toggle="modal" data-target="#editModal_' + this.newsId +'">'+
-                '<span class="glyphicon glyphicon-pencil news_edit" data-toggle="tooltip" data-placement="left" title="Edit news"></span></a>' +
-                '</div>' +
+                    '<div><a href="#" data-toggle="tooltip" data-placement="left" title="Remove news"><span class="glyphicon glyphicon-remove news_delete"></span></a></div>' +
+                    '<div><a href="#" data-toggle="modal" data-news-id="' + this.newsId + '" data-target="#editNewsModal">'+
+                        '<span class="glyphicon glyphicon-pencil news_edit" data-toggle="tooltip" data-placement="left" title="Edit news"></span></a>' +
+                    '</div>'+
                 '</div>';
-            var titleBlock = '';
-            var videoBlock = '';
-            //Actually carousel
+            var titleBlock = '<h3>' + this.title + '</h3>';
             var imagesBlock = '';
-            if(selected) {
-                titleBlock = '<h3>' + this.title + '</h3>';
-                if(images instanceof Array && images.length > 0){
+            var videoBlock = '';
+            if(images instanceof Array && images.length > 0){
                     imagesBlock = returnCarouselContent(images);
                 }
                 if(video) {
-                    videoBlock = '<div><div class="mt20">' +
-                        '<video width="100%" controls>' +
-                        '<source src="' + this.video + '" type="video/mp4">' +
-                        '</video></div></div>';
+                    videoBlock =
+                        '<div class="mt20">' +
+                            '<video width="100%" controls>' +
+                            '<source src="' + this.video + '" type="video/mp4">' +
+                            '</video>' +
+                        '</div>';
                 }
-            } else {
-                titleBlock = '<h3>' + '<a id="' + this.newsId + '" href="#" >' + this.title + '</a>' + '</h3>';
-            }
             var descriptionBlock = '<div class="description">' + this.description + '</div>';
-            var closureBlock = '<div class="row mt20">' +
-                '<div class="col-md-3 col-md-offset-6">' + this.author + '</div>' +
-                '<div class="col-md-3">' + this.createdDate + '</div>' +
+
+            var closureBlock =
+                '<div class="row mt20">' +
+                    '<div class="col-md-3 col-md-offset-6">'+
+                        '<div class="well well-sm centered" data-toggle="popover" data-placement="top" title="Author" data-content="' + this.author.description + '">' + this.author.name + '</div>'+
+                    '</div>' +
+                    '<div class="col-md-3 well well-sm centered">' + this.createdDate + '</div>'+
                 '</div>';
 
             var newsContent = basicBlock + titleBlock + descriptionBlock + imagesBlock + videoBlock + closureBlock;
-            if(selected){
-                var tabBlock = returnNewsTabs();
-                var tabContent = returnTabsContent(newsContent, '<div>Comments</div>');
-                newsContent = tabBlock + tabContent;
-            }
+            var commentsContent = returnCommentContent();
+            var tabBlock = returnNewsTabs();
+            var tabContent = returnTabsContent(newsContent, commentsContent);
 
+            return '<div class="col-md-12 custom_border news_block">' + tabBlock + tabContent + '</div>';
+        }
+    };
+
+    var newsItem = function(news_id, title, description, author, createdDate, main_image) {
+        this.title = title;
+        this.newsId = news_id;
+        this.description = description;
+        this.author = author;
+        this.createdDate = createdDate;
+        this.mainImage = main_image;
+        this.pureHtml = function() {
+            var basicBlock =
+                '<div class="image_container">' +
+                    '<div class="custom_border"><img src="'+ this.mainImage +'" class="news_image"/></div>' +
+                '</div>';
+            var titleBlock = '<h3>' + '<a id="' + this.newsId + '" href="#" >' + this.title + '</a>' + '</h3>';
+            var descriptionBlock = '<div class="description">' + this.description + '</div>';
+
+            var closureBlock = ''+
+                '<div class="row mt20">' +
+                    '<div class="col-md-3 col-md-offset-6">'+
+                        '<div class="well well-sm centered" data-toggle="popover" data-placement="top" title="Author" data-content="' + this.author.description + '">' + this.author.name + '</div>'+
+                    '</div>' +
+                    '<div class="col-md-3 well well-sm centered">' + this.createdDate + '</div>'+
+                '</div>';
+
+            var newsContent = basicBlock + titleBlock + descriptionBlock + closureBlock;
             return '<div class="col-md-12 custom_border news_block">' + newsContent + '</div>';
         };
     };
@@ -75,6 +114,7 @@ $(document).ready(function () {
             });
         } else {
             clearNews();
+            addEmptyNewsNotification();
         }
     };
 
@@ -88,15 +128,21 @@ $(document).ready(function () {
             appendNews(data, true);
         }
         addExpandNewsListeners();
+        initializeToggleFeatures();
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
     };
 
-    var appendNews = function (item, selected) {
-        var news = new newsItem(item.news_id, item.title, item.description, item.author, item.created_date, item.main_image, item.video, item.images, selected);
+    var appendNews = function (item, isSelectedNews) {
+        var news;
+        if(isSelectedNews) {
+            news = new selectedNewsItem(item.news_id, item.title, item.description, item.author, item.created_date, item.main_image, item.video, item.images);
+        } else {
+            news = new newsItem(item.news_id, item.title, item.description, item.author, item.created_date, item.main_image);
+        }
         $('#news_grid').append(news.pureHtml());
-        if(selected){
+        if(isSelectedNews){
             $('.carousel').carousel();
         }
     };
@@ -134,7 +180,6 @@ $(document).ready(function () {
         this.categoryId = categoryId;
         this.name = name;
         this.pureHtml = function() {
-            /*return '<a id="category_' + this.categoryId + '" class="btn btn-default btn-lg btn-menu" href="#">' + this.name + '</a>';*/
             return '<li id="category_' + this.categoryId + '" class="btn-menu"><a href="#">' + this.name + '</a></li>';
         };
     };
@@ -152,6 +197,7 @@ $(document).ready(function () {
 
     var updateCategories = function (data) {
         data.forEach(function (item) {
+            categories.push(item);
             var category = new categoryItem(item.category_id, item.name);
             $('#category_grid').append(category.pureHtml());
         });
@@ -196,11 +242,30 @@ $(document).ready(function () {
             '</ul>';
     };
 
+    var returnCommentContent = function () {
+        return ''+
+            '<div class="alert alert-warning centered mt20" role="alert">' +
+                    '<span class="glyphicon glyphicon-info-sign"></span>Here you can see some comments to the news, but for now this functionality is not supported. Sorry for the inconveniences.' +
+            '</div>';
+    };
+
     var returnTabsContent = function (contentBlock, commentsBlock) {
        return '<div class="tab-content">'+
         '<div role="tabpanel" class="tab-pane active" id="content">' + contentBlock + '</div>'+
         '<div role="tabpanel" class="tab-pane" id="comments">' + commentsBlock + '</div>'+
         '</div>'
     };
+
+    var addEmptyNewsNotification = function() {
+        var notification = '<div class="alert alert-warning centered" role="alert">' +
+            '<span class="glyphicon glyphicon-info-sign"></span>' +
+            'This category currently doesn\'t contain news for now. Be patient and attend us from time to time. In the nearest future we will post here interesting topics.</div>';
+        $('#news_grid').append(notification);
+    };
+
+    var initializeToggleFeatures = function() {
+        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="popover"]').popover();
+    }
 
 });
