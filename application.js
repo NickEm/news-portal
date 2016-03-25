@@ -28,15 +28,16 @@ $(document).ready(function () {
         this.pureHtml = function() {
             news = this;
             var basicBlock =
-                '<div class="image_container">' +
-                    '<div class="custom_border"><img src="'+ this.mainImage +'" class="img-responsive" width="320" height="180"/></div>' +
-                '</div>' +
-                '<div class="pull-right">' +
-                    '<div><a href="#" data-toggle="tooltip" data-placement="left" title="Remove news"><span class="glyphicon glyphicon-remove news_delete"></span></a></div>' +
-                    '<div><a href="#" data-toggle="modal" data-news-id="' + this.newsId + '" data-target="#editNewsModal">'+
-                        '<span class="glyphicon glyphicon-pencil news_edit" data-toggle="tooltip" data-placement="left" title="Edit news"></span></a>' +
-                    '</div>'+
-                '</div>';
+                    '<img src="'+ this.mainImage +'" class="img-responsive pull-left image-container"/>' +
+                    '<div class="pull-right">' +
+                        '<div>' +
+                        '<a href="#"><span class="glyphicon glyphicon-remove news_delete"data-original-title="Remove news" data-toggle="tooltip" data-placement="left"></span></a>'+
+                        '</div>'+
+                        '<div>'+
+                        '<a href="#" data-toggle="modal" data-news-id="1" data-target="#editNewsModal"><span class="glyphicon glyphicon-pencil news_edit" '+
+                            'data-original-title="Edit news" data-toggle="tooltip" data-placement="left"></span></a>'+
+                        '</div>'+
+                    '</div>';
             var titleBlock = '<h3>' + this.title + '</h3>';
             var imagesBlock = '';
             var videoBlock = '';
@@ -51,7 +52,7 @@ $(document).ready(function () {
                             '</video>' +
                         '</div>';
                 }
-            var descriptionBlock = '<div class="description">' + this.description + '</div>';
+            var descriptionBlock = this.description;
 
             var closureBlock =
                 '<div class="row mt20">' +
@@ -61,7 +62,7 @@ $(document).ready(function () {
                     '<div class="col-md-3 well well-sm centered">' + this.createdDate + '</div>'+
                 '</div>';
 
-            var newsContent = basicBlock + titleBlock + descriptionBlock + imagesBlock + videoBlock + closureBlock;
+            var newsContent = '<div>' + basicBlock + titleBlock + descriptionBlock + '</div>' + imagesBlock + videoBlock + closureBlock;
             var commentsContent = returnCommentContent();
             var tabBlock = returnNewsTabs();
             var tabContent = returnTabsContent(newsContent, commentsContent);
@@ -79,11 +80,9 @@ $(document).ready(function () {
         this.mainImage = main_image;
         this.pureHtml = function() {
             var basicBlock =
-                '<div class="image_container">' +
-                    '<div class="custom_border"><img src="'+ this.mainImage +'" class="news_image"/></div>' +
-                '</div>';
+                '<img src="'+ this.mainImage +'" class="img-responsive pull-left image-container"/>';
             var titleBlock = '<h3>' + '<a id="' + this.newsId + '" href="#" >' + this.title + '</a>' + '</h3>';
-            var descriptionBlock = '<div class="description">' + this.description + '</div>';
+            var descriptionBlock = this.description;
 
             var closureBlock = ''+
                 '<div class="row mt20">' +
@@ -93,7 +92,7 @@ $(document).ready(function () {
                     '<div class="col-md-3 well well-sm centered">' + this.createdDate + '</div>'+
                 '</div>';
 
-            var newsContent = basicBlock + titleBlock + descriptionBlock + closureBlock;
+            var newsContent = '<div>' + basicBlock + titleBlock + descriptionBlock + '</div>' + closureBlock;
             return '<div class="col-md-12 custom_border news_block">' + newsContent + '</div>';
         };
     };
