@@ -205,6 +205,8 @@ $(document).ready(function () {
         //Highlight first menu tab
         $('#category_1').addClass("active");
         addRoutingListeners();
+
+        addLoginDropdown();
     };
 
     loadCategories();
@@ -266,6 +268,9 @@ $(document).ready(function () {
     var initializeToggleFeatures = function() {
         $('[data-toggle="tooltip"]').tooltip();
         $('[data-toggle="popover"]').popover();
+    };
+
+    var addLoginDropdown = function() {
     }
 
 });

@@ -25,36 +25,56 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">News</a>
             </div>
-            <ul id="category_grid" class="nav navbar-nav"></ul>
+            <div class="collapse navbar-collapse">
+                <ul id="category_grid" class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                                class="glyphicon glyphicon-wrench"></span> My account</a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-refresh"></span> Update profile</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-qrcode"></span> Share</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-off"></span> Sign out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <!--<div id="news_grid"></div>-->
-
-         <div id="news_grid1">
-            <img class="img-responsive pull-left" src="resources/wolves/wolf_4.jpg" height="270" width="540">
-<!--           <div><a data-original-title="Remove news" href="#" data-toggle="tooltip" data-placement="left"
-                    title=""><span class="glyphicon glyphicon-remove news_delete"></span></a></div>
-            <div><a href="#" data-toggle="modal" data-news-id="1" data-target="#editNewsModal"><span
-                    data-original-title="Edit news" class="glyphicon glyphicon-pencil news_edit" data-toggle="tooltip"
-                    data-placement="left" title=""></span></a></div>-->
-            121) Difference between Composition, Aggregation and Association in OOP? (answer)
-                If two objects are related to each other, they are said to be associated with each other. Composition and
-                Aggregation are two forms of association in object-oriented programming. The composition is stronger
-                association than Aggregation. In Composition, one object is OWNER of another object while in Aggregation one
-                object is just USER of another object. If an object A is composed of object B then B doesn't exist if A
-                ceased to exists, but if object A is just an aggregation of object B then B can exists even if A ceased to
-                exist.
-                122) Give me an example of design pattern which is based upon open closed principle? (answer)
-                This is one of the practical questions I ask experienced Java programmer. I expect them to know about OOP
-                design principles as well as patterns. Open closed design principle asserts that your code should be open
-                for extension but closed for modification. Which means if you want to add new functionality, you can add it
-                easily using the new code but without touching already tried and tested code. There are several design
-                patterns which are based upon open closed design principle e.g. Strategy pattern if you need a new strategy,
-                just implement the interface and configure, no need to modify core logic. One working example is
-                Collections.sort() method which is based on Strategy pattern and follows the open-closed principle, you
-                don't modify sort() method to sort a new object, what you do is just implement Comparator in your own way.
+    <div id="news_grid1">
+        <img class="img-responsive pull-left" src="resources/wolves/wolf_4.jpg" height="270" width="540">
+        <div class="pull-right">
+            <div><a href="#" >
+                <span class="glyphicon glyphicon-remove news_delete"data-original-title="Remove news" data-toggle="tooltip"
+                      data-placement="left"></span></a>
+            </div>
+            <div><a href="#" data-toggle="modal" data-news-id="1" data-target="#editNewsModal">
+                <span class="glyphicon glyphicon-pencil news_edit" data-original-title="Edit news" data-toggle="tooltip"
+                      data-placement="left"></span></a>
+            </div>
         </div>
+        <h3>Title</h3>
+        121) Difference between Composition, Aggregation and Association in OOP? (answer)
+        If two objects are related to each other, they are said to be associated with each other. Composition and
+        Aggregation are two forms of association in object-oriented programming. The composition is stronger
+        association than Aggregation. In Composition, one object is OWNER of another object while in Aggregation one
+        object is just USER of another object. If an object A is composed of object B then B doesn't exist if A
+        ceased to exists, but if object A is just an aggregation of object B then B can exists even if A ceased to
+        exist.
+        122) Give me an example of design pattern which is based upon open closed principle? (answer)
+        This is one of the practical questions I ask experienced Java programmer. I expect them to know about OOP
+        design principles as well as patterns. Open closed design principle asserts that your code should be open
+        for extension but closed for modification. Which means if you want to add new functionality, you can add it
+        easily using the new code but without touching already tried and tested code. There are several design
+        patterns which are based upon open closed design principle e.g. Strategy pattern if you need a new strategy,
+        just implement the interface and configure, no need to modify core logic. One working example is
+        Collections.sort() method which is based on Strategy pattern and follows the open-closed principle, you
+        don't modify sort() method to sort a new object, what you do is just implement Comparator in your own way.
+    </div>
 
     <div class="modal fade" id="editNewsModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
         <div class="modal-dialog" role="document">
