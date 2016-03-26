@@ -16,7 +16,11 @@ Bootstrap JS
 4. Tab
 5. Collapse
 6. Popover
-7. --- Alert
-8. Dropdown
+
+Optional
+7. Dropdown
+8. --- Alert
 9. --- Searching bar
 10. --- Validation
+11.
+12.

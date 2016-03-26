@@ -31,7 +31,7 @@ $(document).ready(function () {
                     '<img src="'+ this.mainImage +'" class="img-responsive pull-left image-container"/>' +
                     '<div class="pull-right">' +
                         '<div>' +
-                        '<a href="#"><span class="glyphicon glyphicon-remove news_delete"data-original-title="Remove news" data-toggle="tooltip" data-placement="left"></span></a>'+
+                        '<a href="#"><span class="glyphicon glyphicon-remove news_delete" data-original-title="Remove news" data-toggle="tooltip" data-placement="left"></span></a>'+
                         '</div>'+
                         '<div>'+
                         '<a href="#" data-toggle="modal" data-news-id="1" data-target="#editNewsModal"><span class="glyphicon glyphicon-pencil news_edit" '+
@@ -46,7 +46,7 @@ $(document).ready(function () {
                 }
                 if(video) {
                     videoBlock =
-                        '<div class="mt20">' +
+                        '<div class="mt15">' +
                             '<video width="100%" controls>' +
                             '<source src="' + this.video + '" type="video/mp4">' +
                             '</video>' +
@@ -55,11 +55,11 @@ $(document).ready(function () {
             var descriptionBlock = this.description;
 
             var closureBlock =
-                '<div class="row mt20">' +
-                    '<div class="col-md-3 col-md-offset-6">'+
+                '<div class="row mt15">' +
+                    '<div class="col-md-3 col-md-offset-6 col-xs-6">'+
                         '<div class="well well-sm centered" data-toggle="popover" data-placement="top" title="Author" data-content="' + this.author.description + '">' + this.author.name + '</div>'+
                     '</div>' +
-                    '<div class="col-md-3 well well-sm centered">' + this.createdDate + '</div>'+
+                    '<div class="col-md-3 col-xs-6 well well-sm centered">' + this.createdDate + '</div>'+
                 '</div>';
 
             var newsContent = '<div>' + basicBlock + titleBlock + descriptionBlock + '</div>' + imagesBlock + videoBlock + closureBlock;
@@ -80,16 +80,18 @@ $(document).ready(function () {
         this.mainImage = main_image;
         this.pureHtml = function() {
             var basicBlock =
-                '<img src="'+ this.mainImage +'" class="img-responsive pull-left image-container"/>';
+                '<a href="' + this.mainImage + '" data-lightbox="image_' + this.newsId + '">'+
+                    '<img src="'+ this.mainImage +'" class="img-responsive pull-left image-container"/>'+
+                '</a>';
             var titleBlock = '<h3>' + '<a id="' + this.newsId + '" href="#" >' + this.title + '</a>' + '</h3>';
             var descriptionBlock = this.description;
 
             var closureBlock = ''+
-                '<div class="row mt20">' +
-                    '<div class="col-md-3 col-md-offset-6">'+
+                '<div class="row mt15">' +
+                    '<div class="col-md-3 col-md-offset-6 col-xs-6">'+
                         '<div class="well well-sm centered" data-toggle="popover" data-placement="top" title="Author" data-content="' + this.author.description + '">' + this.author.name + '</div>'+
                     '</div>' +
-                    '<div class="col-md-3 well well-sm centered">' + this.createdDate + '</div>'+
+                    '<div class="col-md-3 col-xs-6 well well-sm centered">' + this.createdDate + '</div>'+
                 '</div>';
 
             var newsContent = '<div>' + basicBlock + titleBlock + descriptionBlock + '</div>' + closureBlock;
@@ -150,7 +152,7 @@ $(document).ready(function () {
         $('.news_block').on('click', 'a', function () {
             var newsId = $(this).attr("id");
             //TODO: In the same case can be implemented expanding of each news. Just particular json should exist.
-            var newsUrl = "resources/news_" + newsId + ".json";
+            var newsUrl = "http://private-a5cdd5-newsportal.apiary-mock.com/news/nature/" + newsId;
             loadNews(newsUrl);
         });
     };
@@ -164,10 +166,10 @@ $(document).ready(function () {
             var categoryUrl = "";
             switch (category) {
                 case "category_1":
-                    categoryUrl = "resources/news_nature.json";
+                    categoryUrl = "http://private-a5cdd5-newsportal.apiary-mock.com/news/nature";
                     break;
                 case "category_2":
-                    categoryUrl = "resources/news_science.json";
+                    categoryUrl = "http://private-a5cdd5-newsportal.apiary-mock.com/news/science";
                     break;
                 //TODO: In the same case can be implemented other category. Just particular json should exist.
             }
@@ -185,7 +187,7 @@ $(document).ready(function () {
 
     var loadCategories = function () {
         $.ajax({
-            url: "resources/categories.json",
+            url: "http://private-a5cdd5-newsportal.apiary-mock.com/news-types",
             dataType: "json"
         }).done(function (data, textStatus, jqXHR) {
             updateCategories(data);
@@ -210,7 +212,7 @@ $(document).ready(function () {
 
     loadCategories();
 
-    loadNews("resources/news_nature.json");
+    loadNews("http://private-a5cdd5-newsportal.apiary-mock.com/news/nature");
 
     var returnCarouselContent = function (images) {
         var navigationItems = '<li data-target="#image-carousel" data-slide-to="0" class="active"></li>';
@@ -220,7 +222,7 @@ $(document).ready(function () {
             carouselItems += '<div class="item"><img src="' + images[i].image_url + '"></div>';
         }
 
-        return '<div id="image-carousel" class="mt20 carousel slide" data-ride="carousel">'+
+        return '<div id="image-carousel" class="mt15 carousel slide" data-ride="carousel">'+
         '<ol class="carousel-indicators">'+ navigationItems + '</ol>'+
 
         '<div class="carousel-inner" role="listbox">' + carouselItems + '</div>'+
@@ -245,7 +247,7 @@ $(document).ready(function () {
 
     var returnCommentContent = function () {
         return ''+
-            '<div class="alert alert-warning centered mt20" role="alert">' +
+            '<div class="alert alert-warning centered mt15" role="alert">' +
                     '<span class="glyphicon glyphicon-info-sign"></span>Here you can see some comments to the news, but for now this functionality is not supported. Sorry for the inconveniences.' +
             '</div>';
     };
@@ -258,7 +260,7 @@ $(document).ready(function () {
     };
 
     var addEmptyNewsNotification = function() {
-        var notification = '<div class="alert alert-warning centered" role="alert">' +
+        var notification = '<div class="alert alert-warning centered mt15" role="alert">' +
             '<span class="glyphicon glyphicon-info-sign"></span>' +
             'This category currently doesn\'t contain news for now. Be patient and attend us from time to time. In the nearest future we will post here interesting topics.</div>';
         $('#news_grid').append(notification);
