@@ -19,9 +19,10 @@ Bootstrap JS
 
 [Optional]
 Dropdown
---> Alert
+Alert
 --> Searching bar
---> Validation
 --> Footer
 Less
---> Media query
+Media query
+--> Validation
+--> Paging bar

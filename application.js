@@ -4,7 +4,8 @@ $(document).ready(function () {
     var categories = [];
 
     $('#editNewsModal').on('show.bs.modal', function(e) {
-        /*var bookId = $(e.relatedTarget).data('book-id');*/
+        /* To fetch some data from the caller you can use
+        var newsId = $(e.relatedTarget).data('news-id');*/
         var categoriesBlock ='';
         categories.forEach(function (item) {
             categoriesBlock += '<option>' + item.name+ '</option>';
@@ -28,14 +29,15 @@ $(document).ready(function () {
         this.pureHtml = function() {
             news = this;
             var basicBlock =
-                    '<img src="'+ this.mainImage +'" class="img-responsive pull-left image-container"/>' +
-                    '<div class="pull-right">' +
-                        '<div>' +
-                        '<a href="#"><span class="glyphicon glyphicon-remove news_delete" data-original-title="Remove news" data-toggle="tooltip" data-placement="left"></span></a>'+
+                    '<img src="'+ this.mainImage +'" class="img-responsive pull-left image-container"/>'+
+                    '<div class="pull-right">'+
+                        '<div>'+
+                            '<a href="#" data-toggle="modal" data-target="#deleteNewsModal"><span class="glyphicon glyphicon-remove news_delete" '+
+                                'data-original-title="Remove news" data-toggle="tooltip" data-placement="left"></span></a>'+
                         '</div>'+
                         '<div>'+
-                        '<a href="#" data-toggle="modal" data-news-id="1" data-target="#editNewsModal"><span class="glyphicon glyphicon-pencil news_edit" '+
-                            'data-original-title="Edit news" data-toggle="tooltip" data-placement="left"></span></a>'+
+                            '<a href="#" data-toggle="modal" data-target="#editNewsModal"><span class="glyphicon glyphicon-pencil news_edit" '+
+                                'data-original-title="Edit news" data-toggle="tooltip" data-placement="left"></span></a>'+
                         '</div>'+
                     '</div>';
             var titleBlock = '<h3>' + this.title + '</h3>';
@@ -67,7 +69,7 @@ $(document).ready(function () {
             var tabBlock = returnNewsTabs();
             var tabContent = returnTabsContent(newsContent, commentsContent);
 
-            return '<div class="col-md-12 custom_border news_block">' + tabBlock + tabContent + '</div>';
+            return '<div class="col-md-12 news-block">' + tabBlock + tabContent + '</div>';
         }
     };
 
@@ -97,7 +99,7 @@ $(document).ready(function () {
                 '</div>';
 
             var newsContent = '<div>' + basicBlock + titleBlock + descriptionBlock + '</div>' + closureBlock;
-            return '<div class="col-md-12 custom_border news_block">' + newsContent + '</div>';
+            return '<div class="col-md-12 news-block">' + newsContent + '</div>';
         };
     };
 
@@ -151,7 +153,7 @@ $(document).ready(function () {
     };
 
     var addExpandNewsListeners = function () {
-        $('.news_block').on('click', '.news-expander', function () {
+        $('.news-block').on('click', '.news-expander', function () {
             var newsId = $(this).attr("id");
             //TODO: In the same case can be implemented expanding of each news. Just particular json should exist.
             var newsUrl = "http://private-a5cdd5-newsportal.apiary-mock.com/news/nature/" + newsId;
@@ -162,8 +164,8 @@ $(document).ready(function () {
     //To highlight menu navigation buttons on click
     var addRoutingListeners = function () {
         $('#category_grid').on('click', '.btn-menu', function () {
-            $(".btn-menu").removeClass("active");
-            $(this).addClass("active");
+            $(this).parents(".dropdown").find('.selector').html($(this).text() + ' <span class="caret"></span>');
+            $(this).parents(".dropdown").find('.selector').val($(this).data('value'));
             var category = $(this).attr("id");
             var categoryUrl = "";
             switch (category) {

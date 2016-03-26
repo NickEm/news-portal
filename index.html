@@ -20,7 +20,7 @@
 <body>
 <div class="container">
 
-    <div class="custom_border mt15"><img class="img-responsive" src="resources/images/news_logo.png" width="100%"></div>
+    <div class="custom-border mt15"><img class="img-responsive" src="resources/images/news_logo.png" width="100%"></div>
 
     <nav class="navbar navbar-default mt15">
         <div class="container-fluid">
@@ -34,7 +34,17 @@
                 <a class="navbar-brand" href="#">News</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul id="category_grid" class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle selector" data-toggle="dropdown" href="#">Nature
+                            <span class="caret"></span></a>
+                        <ul id="category_grid" class="dropdown-menu">
+                        </ul>
+                    </li>
+                </ul>
+
+                <!--<ul id="category_grid" class="nav navbar-nav"></ul>-->
+
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
@@ -49,11 +59,20 @@
                         </ul>
                     </li>
                 </ul>
+
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
             </div>
         </div>
     </nav>
 
     <div id="news_grid"></div>
+
+    <!--<div class="footer">©Don\'t copy, or I\'ll evict you last money.</div>-->
 
 <!--    <div id="news_grid1">
         <a href="resources/images/wolves/wolf_5.jpg" data-lightbox="image_1">
@@ -72,13 +91,32 @@
         <h3>Title</h3>
     </div>-->
 
-    <div class="modal fade" id="editNewsModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade bs-example-modal-sm" id="deleteNewsModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="modalLabel">Edit news</h4>
+                    <h4 class="modal-title" id="modalLabel">Delete news</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger centered" role="alert">Do you really want to delete this news?<br> You will not be able to restore it.</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editNewsModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Edit news</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -105,7 +143,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
