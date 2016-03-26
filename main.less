@@ -1,0 +1,44 @@
+@mt15: 15px 0 0 0;
+
+body{
+  background-image: url("resources/images/background_2.jpg");
+  margin: auto;
+}
+
+.container {
+  max-width: 768px;
+}
+
+.image-container{
+  margin: 0 15px 15px 0;
+  width: 320px;
+  height: 180px;
+}
+
+.mt15 {
+  margin: @mt15;
+}
+
+.custom_border{
+  border: 5px solid #E6E6E6;
+  border-radius: 10px;
+}
+
+.news_block{
+  padding: 10px;
+  margin: @mt15;
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+
+.centered {
+  text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+
+  .signature-row {
+    width: 100%;
+  }
+
+}

@@ -83,15 +83,17 @@ $(document).ready(function () {
                 '<a href="' + this.mainImage + '" data-lightbox="image_' + this.newsId + '">'+
                     '<img src="'+ this.mainImage +'" class="img-responsive pull-left image-container"/>'+
                 '</a>';
-            var titleBlock = '<h3>' + '<a id="' + this.newsId + '" href="#" >' + this.title + '</a>' + '</h3>';
+            var titleBlock = '<h3>' + '<a id="' + this.newsId + '" href="#" class="news-expander">' + this.title + '</a>' + '</h3>';
             var descriptionBlock = this.description;
 
             var closureBlock = ''+
                 '<div class="row mt15">' +
-                    '<div class="col-md-3 col-md-offset-6 col-xs-6">'+
+                    '<div class="col-md-3 col-md-offset-6 col-xs-6 signature-row">'+
                         '<div class="well well-sm centered" data-toggle="popover" data-placement="top" title="Author" data-content="' + this.author.description + '">' + this.author.name + '</div>'+
-                    '</div>' +
-                    '<div class="col-md-3 col-xs-6 well well-sm centered">' + this.createdDate + '</div>'+
+                    '</div>'+
+                    '<div class="col-md-3 col-xs-6 signature-row">'+
+                        '<div class="well well-sm centered">' + this.createdDate + '</div>'+
+                    '</div>'+
                 '</div>';
 
             var newsContent = '<div>' + basicBlock + titleBlock + descriptionBlock + '</div>' + closureBlock;
@@ -149,7 +151,7 @@ $(document).ready(function () {
     };
 
     var addExpandNewsListeners = function () {
-        $('.news_block').on('click', 'a', function () {
+        $('.news_block').on('click', '.news-expander', function () {
             var newsId = $(this).attr("id");
             //TODO: In the same case can be implemented expanding of each news. Just particular json should exist.
             var newsUrl = "http://private-a5cdd5-newsportal.apiary-mock.com/news/nature/" + newsId;

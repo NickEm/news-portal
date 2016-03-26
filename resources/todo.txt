@@ -17,10 +17,11 @@ Bootstrap JS
 5. Collapse
 6. Popover
 
-Optional
-7. Dropdown
-8. --- Alert
-9. --- Searching bar
-10. --- Validation
-11.
-12.
+[Optional]
+Dropdown
+--> Alert
+--> Searching bar
+--> Validation
+--> Footer
+Less
+--> Media query

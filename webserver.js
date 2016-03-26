@@ -22,6 +22,7 @@ http.createServer( function(req, res) {
         ".js": "application/javascript",
         ".json": "application/json",
         ".css": "text/css",
+        ".less": "text/css",
         ".txt": "text/plain",
         ".jpg": "image/jpeg",
         ".ico": "image/jpeg",
