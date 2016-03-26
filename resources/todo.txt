@@ -20,7 +20,7 @@ Bootstrap JS
 [Optional]
 Dropdown
 Alert
---> Searching bar
+Searching bar
 --> Footer
 Less
 Media query
