@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="newsPortalApp">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>News Portal</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet/less" type="text/css" href="main.less">
+    <link rel="stylesheet" href="resources/lightbox/css/lightbox.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.6.1/less.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.js"></script>
+    <script src="resources/lightbox/js/lightbox.js"></script>
+    <script src="angular.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <nav class="navbar navbar-default mt15">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">News</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle selector" data-toggle="dropdown" href="#">Nature
+                            <span class="caret"></span></a>
+                        <ul id="category_grid" class="dropdown-menu">
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                                class="glyphicon glyphicon-user"></span> My account</a>
+
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-refresh"></span> Update profile</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-qrcode"></span> Share</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-off"></span> Sign out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div ng-controller="NewsController">
+        <div class="col-md-12 news-block" ng-repeat="news in listOfNews">
+            <!--<div ng-model="news.title"></div>-->
+            <div>{{news.title}}</div>
+<!--            <div><a href="resources/images/main/wolf_4.jpg" data-lightbox="image_1"><img
+                    src="resources/images/main/wolf_4.jpg" class="img-responsive pull-left image-container"></a>
+
+                <h3><a id="1" href="#" class="news-expander">Something about wolfs</a></h3>The Arctic wolf (Canis lupus
+                arctos), also known as the Melville Island wolf is a possible subspecies of gray wolf native to the
+                Canadian Arctic Archipelago, from Melville Island to Ellesmere Island. It is a medium-sized subspecies,
+                distinguished from the northwestern wolf by its smaller size, its whiter coloration, its narrower
+                braincase, and larger carnassials. Since 1930, there has been a progressive reduction in size in Arctic
+                wolf skulls, which is likely the result of wolf-dog hybridization.
+            </div>
+            <div class="row mt15">
+                <div class="col-md-3 col-md-offset-6 col-xs-6 signature-row">
+                    <div data-original-title="Author" class="well well-sm centered" data-toggle="popover"
+                         data-placement="top" title="" data-content="Outstanding writer from USA">Nick Em
+                    </div>
+                </div>
+                <div class="col-md-3 col-xs-6 signature-row">
+                    <div class="well well-sm centered">2016-03-15 17:00</div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
