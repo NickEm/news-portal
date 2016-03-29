@@ -1,35 +1,27 @@
 var newsPortalApp = angular.module('newsPortalApp', []);
-newsPortalApp.controller('NewsController', function ($scope, datfactory) {
+newsPortalApp.controller('newsController', function ($scope, newsService) {
 
     $scope.listOfNews = [];
-    datfactory.getlist().then(function(data) { $scope.listOfNews = data });
+    newsService.getListOfNews().then(function(data) { $scope.listOfNews = data });
 
-/*    $http.get("http://private-a5cdd5-newsportal.apiary-mock.com/news/nature")
-        .then(
-            function(response){
-                $scope.listOfNews = response;
-            },
-            function(response){
-                // failure call back
-            }
-        );*/
 });
 
-newsPortalApp.factory('datfactory', function ($http, $q){
-    var factory = {};
-    factory.getlist = function(){
+newsPortalApp.service('newsService', function ($http, $q){
+    var service = {};
+    service.getListOfNews = function(){
         var defer = $q.defer();
         $http.get("http://private-a5cdd5-newsportal.apiary-mock.com/news/nature")
             .then(
                 function(response){
-                    debugger;
+                    console.log('News are loaded successfully.');
                     defer.resolve(response.data);
                 },
                 function(response){
+                    console.log('Error during loading news.');
                     defer.reject();
                 }
             );
         return defer.promise;
     };
-    return factory;
+    return service;
 });

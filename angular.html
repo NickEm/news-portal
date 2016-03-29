@@ -22,6 +22,8 @@
 
 <div class="container">
 
+    <div class="custom-border mt15"><img class="img-responsive" src="resources/images/news_logo.png" width="100%"></div>
+
     <nav class="navbar navbar-default mt15">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -70,31 +72,8 @@
         </div>
     </nav>
 
-    <div ng-controller="NewsController">
-        <div class="col-md-12 news-block" ng-repeat="news in listOfNews">
-            <!--<div ng-model="news.title"></div>-->
-            <div>{{news.title}}</div>
-<!--            <div><a href="resources/images/main/wolf_4.jpg" data-lightbox="image_1"><img
-                    src="resources/images/main/wolf_4.jpg" class="img-responsive pull-left image-container"></a>
-
-                <h3><a id="1" href="#" class="news-expander">Something about wolfs</a></h3>The Arctic wolf (Canis lupus
-                arctos), also known as the Melville Island wolf is a possible subspecies of gray wolf native to the
-                Canadian Arctic Archipelago, from Melville Island to Ellesmere Island. It is a medium-sized subspecies,
-                distinguished from the northwestern wolf by its smaller size, its whiter coloration, its narrower
-                braincase, and larger carnassials. Since 1930, there has been a progressive reduction in size in Arctic
-                wolf skulls, which is likely the result of wolf-dog hybridization.
-            </div>
-            <div class="row mt15">
-                <div class="col-md-3 col-md-offset-6 col-xs-6 signature-row">
-                    <div data-original-title="Author" class="well well-sm centered" data-toggle="popover"
-                         data-placement="top" title="" data-content="Outstanding writer from USA">Nick Em
-                    </div>
-                </div>
-                <div class="col-md-3 col-xs-6 signature-row">
-                    <div class="well well-sm centered">2016-03-15 17:00</div>
-                </div>
-            </div>-->
-        </div>
+    <div ng-controller="newsController">
+        <div ng-include="'templates/listOfNews.htm'"></div>
     </div>
 
 </div>

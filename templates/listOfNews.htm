@@ -1,0 +1,21 @@
+<div class="col-md-12 news-block" data-ng-repeat="news in listOfNews">
+    <div>
+        <a href="{{news.main_image}}" data-lightbox="image_1">
+            <img src="{{news.main_image}}" class="img-responsive pull-left image-container"/>
+        </a>
+        <h3>
+            <a id="1" href="#" class="news-expander">{{news.title}}</a>
+        </h3>
+        {{news.description}}
+    </div>
+    <div class="row mt15">
+        <div class="col-md-3 col-md-offset-6 col-xs-6 signature-row">
+            <div data-original-title="Author" class="well well-sm centered" data-toggle="popover"
+                 data-placement="top" title="" data-content="Outstanding writer from USA">{{news.author.name}}
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-6 signature-row">
+            <div class="well well-sm centered">{{news.created_date}}</div>
+        </div>
+    </div>
+</div>

@@ -18,6 +18,7 @@ http.createServer( function(req, res) {
     var ext = path.extname(filename);
     var localPath = __dirname;
     var validExtensions = {
+        ".htm" : "text/html",
         ".html" : "text/html",
         ".js": "application/javascript",
         ".json": "application/json",

@@ -1,15 +1,6 @@
-- відобразити у вигляді списку
-- відобразити окремий вигляд кожного елемента
-- додати можливість редагування та видалення елемента
-- використати елементи Bootstrap JS Ref: Carousel, Tab, Modal і ще 3 додатково за бажанням
-
-Додатково:
-Валідація полів, логування користувача,
-пошук по списку елементів,
-Також використати будь-які інші
-компонетки Bootstrap
-
-Bootstrap JS
+Bootstrap
+-------------------------------------
+[Required]
 1. Tooltip
 2. Carousel
 3. Modal
@@ -26,3 +17,21 @@ Less
 Media query
 --> Validation
 --> Paging bar
+--> Login form
+
+
+AngularJs
+-------------------------------------
+[Required]
+Dependency injection
+--> Directive
+--> Filter
+Service
+--> Provider
+--> Factory
+--> Constant
+--> Value
+Template
+
+[Optional]
+@component, @directive, templates, DI
