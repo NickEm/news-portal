@@ -14,6 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.6.1/less.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-route.js"></script>
     <script src="resources/lightbox/js/lightbox.js"></script>
     <script src="angular.js"></script>
 </head>
@@ -72,13 +73,19 @@
         </div>
     </nav>
 
-    <div ng-controller="listOfNewsController">
+<!--    <div ng-controller="listOfNewsController">
         <div ng-include="'templates/listOfNews.htm'"></div>
     </div>
 
-    <div ng-controller="listOfNewsController">
-        <div ng-include="'templates/listOfNews.htm'"></div>
-    </div>
+    <div ng-controller="particularNewsController">
+        <div ng-include="'templates/particularNews.htm'"></div>
+    </div>-->
+
+    <div><ng-view></ng-view></div>
+
+<!--    <div ng-controller="particularNewsController">
+        <div ng-include="'templates/particularNews.htm'"></div>
+    </div>-->
 
 </div>
 </body>
