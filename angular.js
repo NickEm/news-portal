@@ -1,6 +1,31 @@
 var newsPortalApp = angular.module('newsPortalApp', []);
-newsPortalApp.controller('newsController', function ($scope, newsService) {
 
+newsPortalApp.config(['$routeProvider',
+    function ($routeProvider) {
+        $routeProvider
+            .when('news/nature', {
+                templateUrl: 'news/nature',
+                controller: 'listOfNewsController'})
+            .when('news/science', {
+                templateUrl: 'news/science',
+                controller: 'ShowOrdersController'})
+            .when('news/science', {
+                templateUrl: 'news/science',
+                controller: 'ShowOrdersController'})
+            .otherwise({
+                redirectTo: 'news/nature'
+        });
+    }
+]);
+
+
+sampleApp.controller('particularNewsController', function($scope, $routeParams) {
+
+    $scope.order_id = $routeParams.orderId;
+
+});
+
+newsPortalApp.controller('listOfNewsController', function ($scope, newsService) {
     $scope.listOfNews = [];
     newsService.getListOfNews().then(function(data) { $scope.listOfNews = data });
 

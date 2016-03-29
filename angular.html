@@ -72,7 +72,11 @@
         </div>
     </nav>
 
-    <div ng-controller="newsController">
+    <div ng-controller="listOfNewsController">
+        <div ng-include="'templates/listOfNews.htm'"></div>
+    </div>
+
+    <div ng-controller="listOfNewsController">
         <div ng-include="'templates/listOfNews.htm'"></div>
     </div>
 
