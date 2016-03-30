@@ -5,11 +5,10 @@
 2. Carousel
 3. Modal
 4. Tab
-5. Collapse
+5. Dropdown
 6. Popover
 
 [Optional]
-Dropdown
 Alert
 Searching bar
 --> Footer
@@ -29,9 +28,20 @@ Filter
 Service
 Provider
 --> Factory
---> Constant
+Constant
 --> Value
 Template
+
+Fix dropdown to not reload page
+Popover for the list
+Fix news navigation
+Find the way for carousel
+Searching
+Delete
+Edit
+Alert
+Show modal
+Add validation
 
 [Optional]
 @component, @directive, templates, DI
