@@ -42,6 +42,7 @@ Edit
 Alert
 Show modal
 Add validation
+Split the logic on small files
 
 [Optional]
 @component, @directive, templates, DI
