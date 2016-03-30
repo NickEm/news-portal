@@ -1,5 +1,5 @@
-Bootstrap
--------------------------------------
+<--+ Bootstrap +-->
+
 [Required]
 1. Tooltip
 2. Carousel
@@ -18,14 +18,14 @@ Media query
 --> Validation
 --> Paging bar
 --> Login form
-
-
-AngularJs
 -------------------------------------
+
+<--+ AngularJs +-->
+
 [Required]
 Dependency injection
---> Directive
---> Filter
+Directive
+Filter
 Service
 Provider
 --> Factory
@@ -35,3 +35,8 @@ Template
 
 [Optional]
 @component, @directive, templates, DI
+-------------------------------------
+
+<--+ Strangest issues +-->
+About order of including bootstrap-ui to project
+---------------------------------

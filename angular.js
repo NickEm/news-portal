@@ -1,10 +1,10 @@
-var newsPortalApp = angular.module('newsPortalApp', ['ngRoute']);
+var newsPortalApp = angular.module('newsPortalApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
 
 newsPortalApp.config(
     function ($routeProvider) {
         $routeProvider
             .when('/news/:type/:newsId', {
-                templateUrl: 'templates/listOfNews.htm',
+                templateUrl: 'templates/detailsNews.htm',
                 controller: 'detailsNewsController'
             })
             .when('/news/:type', {
@@ -17,14 +17,46 @@ newsPortalApp.config(
     }
 );
 
-newsPortalApp.controller('detailsNewsController', function($scope, $routeParams) {
-    $scope.newsId = $routeParams.newsId;
+newsPortalApp.constant("CONTENT_API", {
+    "NEWS": "http://private-a5cdd5-newsportal.apiary-mock.com/news/"
+});
+
+//Strict Contextual Escaping - to result in a value that is marked as safe to use for that context.
+newsPortalApp.filter("trustUrl", function ($sce) {
+    return function (sourceUrl) {
+        return $sce.trustAsResourceUrl(sourceUrl);
+    };
+});
+
+//Get tooltips to work
+newsPortalApp.directive('tooltip', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs){
+            $(element).hover(function(){
+                $(element).tooltip('show');
+            }, function(){
+                $(element).tooltip('hide');
+            });
+        }
+    };
+});
+
+newsPortalApp.controller('detailsNewsController', function($scope, $routeParams, newsService) {
+    $scope.news = {};
+
+    newsService.getNews($routeParams.type, $routeParams.newsId).then(
+        function (data) {
+            $scope.news = data;
+        }, function (data) {
+            $scope.news = data;
+        });
 });
 
 newsPortalApp.controller('listOfNewsController', function ($scope, $routeParams, newsService) {
     $scope.listOfNews = [];
 
-    newsService.getListOfNews($routeParams.type, $routeParams.newsId).then(
+    newsService.getNews($routeParams.type).then(
         function (data) {
             $scope.listOfNews = data;
         }, function (data) {
@@ -32,27 +64,20 @@ newsPortalApp.controller('listOfNewsController', function ($scope, $routeParams,
         });
 });
 
-newsPortalApp.service('newsService', function ($http, $q){
+newsPortalApp.service('newsService', function ($http, $q, CONTENT_API) {
     var service = {};
-    service.getListOfNews = function(newsType){
-        switch (newsType) {
-            case 'nature':
-                if()
-                return makeHttpCallForNews($http, $q, "http://private-a5cdd5-newsportal.apiary-mock.com/news/nature");
-            case 'science':
-                return makeHttpCallForNews($http, $q, "http://private-a5cdd5-newsportal.apiary-mock.com/news/science");
-            case 'economic':
-                return makeHttpCallForNews($http, $q, "http://private-a5cdd5-newsportal.apiary-mock.com/news/economic");
-            case 'politic':
-                return makeHttpCallForNews($http, $q, "http://private-a5cdd5-newsportal.apiary-mock.com/news/politic");
-            case 'charity':
-                return makeHttpCallForNews($http, $q, "http://private-a5cdd5-newsportal.apiary-mock.com/news/charity");
-            default : {
-                //TODO also we could implement error message
-                var deferResult = $q.defer();
-                deferResult.reject();
-                return deferResult.promise;
+    service.getNews = function (newsType, newsId) {
+        if (newsType) {
+            if (newsId) {
+                return makeHttpCallForNews($http, $q, CONTENT_API.NEWS + newsType + "/" + newsId);
+            } else {
+                return makeHttpCallForNews($http, $q, CONTENT_API.NEWS + newsType);
             }
+        } else {
+            //TODO also we could implement error message
+            var deferResult = $q.defer();
+            deferResult.reject();
+            return deferResult.promise;
         }
     };
     return service;
