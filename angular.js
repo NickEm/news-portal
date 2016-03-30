@@ -3,97 +3,73 @@ var newsPortalApp = angular.module('newsPortalApp', ['ngRoute']);
 newsPortalApp.config(
     function ($routeProvider) {
         $routeProvider
-            .when('/news/nature/:newsId', {
+            .when('/news/:type/:newsId', {
                 templateUrl: 'templates/listOfNews.htm',
-                controller: 'particularNewsController'
+                controller: 'detailsNewsController'
             })
-            .when('/news/science', {
+            .when('/news/:type', {
                 templateUrl: 'templates/listOfNews.htm',
-                controller: 'listOfScienceNewsController'
-            })
-            .when('/news/nature', {
-                templateUrl: 'templates/listOfNews.htm',
-                controller: 'listOfNatureNewsController'
+                controller: 'listOfNewsController'
             })
             .otherwise({
-                redirectTo: '/'
+                redirectTo: '/news/nature'
             });
     }
 );
 
-newsPortalApp.controller('particularNewsController', function($scope, $routeParams) {
-    debugger;
-    $scope.order_id = $routeParams.newsId;
+newsPortalApp.controller('detailsNewsController', function($scope, $routeParams) {
+    $scope.newsId = $routeParams.newsId;
 });
 
-/*newsPortalApp.controller('listOfNewsController', function ($scope, $routeParams, natureNewsService, scienceNewsService) {
-    debugger;
+newsPortalApp.controller('listOfNewsController', function ($scope, $routeParams, newsService) {
     $scope.listOfNews = [];
-    $scope.$on('$routeChangeSuccess', function() {
-        debugger;
-        switch($routeParams.type) {
+
+    newsService.getListOfNews($routeParams.type, $routeParams.newsId).then(
+        function (data) {
+            $scope.listOfNews = data;
+        }, function (data) {
+            $scope.listOfNews = data;
+        });
+});
+
+newsPortalApp.service('newsService', function ($http, $q){
+    var service = {};
+    service.getListOfNews = function(newsType){
+        switch (newsType) {
             case 'nature':
-                natureNewsService.getListOfNews().then(function(data) { $scope.listOfNews = data });
-                break;
+                if()
+                return makeHttpCallForNews($http, $q, "http://private-a5cdd5-newsportal.apiary-mock.com/news/nature");
             case 'science':
-                scienceNewsService.getListOfNews().then(function(data) { $scope.listOfNews = data });
-                break;
+                return makeHttpCallForNews($http, $q, "http://private-a5cdd5-newsportal.apiary-mock.com/news/science");
+            case 'economic':
+                return makeHttpCallForNews($http, $q, "http://private-a5cdd5-newsportal.apiary-mock.com/news/economic");
+            case 'politic':
+                return makeHttpCallForNews($http, $q, "http://private-a5cdd5-newsportal.apiary-mock.com/news/politic");
+            case 'charity':
+                return makeHttpCallForNews($http, $q, "http://private-a5cdd5-newsportal.apiary-mock.com/news/charity");
+            default : {
+                //TODO also we could implement error message
+                var deferResult = $q.defer();
+                deferResult.reject();
+                return deferResult.promise;
+            }
         }
-    });
-});*/
-
-newsPortalApp.controller('listOfScienceNewsController', function ($scope, $routeParams, scienceNewsService) {
-    debugger;
-    $scope.listOfNews = [];
-    scienceNewsService.getListOfNews().then(function (data) {
-        $scope.listOfNews = data;
-    });
-});
-
-newsPortalApp.controller('listOfNatureNewsController', function ($scope, $routeParams, natureNewsService) {
-    debugger;
-    $scope.listOfNews = [];
-    natureNewsService.getListOfNews().then(function (data) {
-        $scope.listOfNews = data;
-    });
-});
-
-newsPortalApp.service('natureNewsService', function ($http, $q){
-    var service = {};
-    service.getListOfNews = function(){
-        var defer = $q.defer();
-        $http.get("http://private-a5cdd5-newsportal.apiary-mock.com/news/nature")
-            .then(
-                function(response){
-                    console.log('News are loaded successfully.');
-                    defer.resolve(response.data);
-                },
-                function(response){
-                    console.log('Error during loading news.');
-                    defer.reject();
-                }
-            );
-        return defer.promise;
     };
     return service;
 });
 
-newsPortalApp.service('scienceNewsService', function ($http, $q){
-    var service = {};
-    service.getListOfNews = function(){
-        var defer = $q.defer();
-        $http.get("http://private-a5cdd5-newsportal.apiary-mock.com/news/science")
-            .then(
-                function(response){
-                    console.log('News are loaded successfully.');
-                    defer.resolve(response.data);
-                },
-                function(response){
-                    console.log('Error during loading news.');
-                    defer.reject();
-                }
-            );
-        return defer.promise;
-    };
-    return service;
-});
+var makeHttpCallForNews = function($http, $q, url) {
+    var defer = $q.defer();
+    $http.get(url)
+        .then(
+            function(response){
+                console.log('News are loaded successfully.');
+                defer.resolve(response.data);
+            },
+            function(response){
+                console.log('Error during loading news.');
+                defer.reject();
+            }
+        );
+    return defer.promise;
+};

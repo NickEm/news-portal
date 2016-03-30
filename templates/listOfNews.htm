@@ -1,7 +1,7 @@
-<div class="col-md-12 news-block" data-ng-repeat="news in listOfNews">
+<div class="col-md-12 news-block" ng-if="listOfNews" data-ng-repeat="news in listOfNews">
     <div>
         <a href="{{news.main_image}}" data-lightbox="image_1">
-            <img src="{{news.main_image}}" class="img-responsive pull-left image-container"/>
+            <img ng-src="{{news.main_image}}" class="img-responsive pull-left image-container"/>
         </a>
         <h3>
             <a id="1" href="#" class="news-expander">{{news.title}}</a>
@@ -15,7 +15,14 @@
             </div>
         </div>
         <div class="col-md-3 col-xs-6 signature-row">
-            <div class="well well-sm centered">{{news.created_date}}</div>
+            <div class="well well-sm centered">{{news.created_date | limitTo:10}}</div>
         </div>
+    </div>
+</div>
+
+<div ng-if="!listOfNews">
+    <div class="alert alert-warning centered mt15" role="alert">
+        <span class="glyphicon glyphicon-info-sign"></span>
+        This category currently doesn't contain news for now. Be patient and attend us from time to time. In the nearest future we will post here interesting topics.
     </div>
 </div>

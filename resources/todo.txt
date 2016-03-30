@@ -27,7 +27,7 @@ Dependency injection
 --> Directive
 --> Filter
 Service
---> Provider
+Provider
 --> Factory
 --> Constant
 --> Value
