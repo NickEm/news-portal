@@ -33,16 +33,15 @@ Constant
 Template
 
 
-Find the way for carousel
-Searching
-Delete
+Delete action
 Edit
-Alert
 Show modal
 Add validation
-Split the logic on small files
 Think about different environments
 Think about redirect in case of typed url
+Repair lighbox
+Changes to Controller As
+Case insensative
 
 Issue understood:
 Use directive within controller to represent different region content in the single view. Directive has own scope and own little view.

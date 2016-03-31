@@ -1,10 +1,10 @@
-<div class="col-md-12 news-block" ng-if="listOfNews" data-ng-repeat="news in listOfNews">
+<div class="col-md-12 news-block" ng-if="listOfNews" ng-repeat="news in listOfNews | filter:searchModel.search">
     <div>
-        <a href="{{news.main_image}}" data-lightbox="image_1">
+        <a href="{{news.main_image}}" data-lightbox="image_{{news.news_id}}">
             <img ng-src="{{news.main_image}}" class="img-responsive pull-left image-container"/>
         </a>
         <h3>
-            <a id="1" href="#/news/{{news.type}}/{{news.news_id}}" class="news-expander">{{news.title}}</a>
+            <a id="news_{{news.news_id}}" href="#/news/{{news.type}}/{{news.news_id}}" class="news-expander">{{news.title}}</a>
         </h3>
         {{news.description}}
     </div>
