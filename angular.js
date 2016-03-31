@@ -32,13 +32,23 @@ newsPortalApp.filter("trustUrl", function ($sce) {
 newsPortalApp.directive('tooltip', function(){
     return {
         restrict: 'A',
-        link: function(scope, element, attrs){
+        link: function(scope, element){
             $(element).hover(function(){
                 $(element).tooltip('show');
             }, function(){
                 $(element).tooltip('hide');
             });
         }
+    };
+});
+
+newsPortalApp.controller('navigationController', function($scope) {
+    $scope.changeNavigation = function($event) {
+        $($event.target).parents(".dropdown").find('.cursor-pointer').html($($event.target).text() + ' <span class="caret"></span>');
+    };
+
+    $scope.deleteNews = function(newsId) {
+        debugger;
     };
 });
 
@@ -51,6 +61,11 @@ newsPortalApp.controller('detailsNewsController', function($scope, $routeParams,
         }, function (data) {
             $scope.news = data;
         });
+
+    $scope.deleteNews = function(newsId) {
+        debugger;
+    };
+
 });
 
 newsPortalApp.controller('listOfNewsController', function ($scope, $routeParams, newsService) {
@@ -61,6 +76,7 @@ newsPortalApp.controller('listOfNewsController', function ($scope, $routeParams,
             $scope.listOfNews = data;
         }, function (data) {
             $scope.listOfNews = data;
+
         });
 });
 
@@ -76,7 +92,7 @@ newsPortalApp.service('newsService', function ($http, $q, CONTENT_API) {
         } else {
             //TODO also we could implement error message
             var deferResult = $q.defer();
-            deferResult.reject();
+            deferResult.reject(responce);
             return deferResult.promise;
         }
     };

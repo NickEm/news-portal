@@ -10,9 +10,7 @@
     </div>
     <div class="row mt15">
         <div class="col-md-3 col-md-offset-6 col-xs-6 signature-row">
-            <div data-original-title="Author" class="well well-sm centered" data-toggle="popover"
-                 data-placement="top" title="" data-content="Outstanding writer from USA">{{news.author.name}}
-            </div>
+            <div class="well well-sm centered cursor-pointer" popover-title="Author" uib-popover="{{news.author.description}}">{{news.author.name}}</div>
         </div>
         <div class="col-md-3 col-xs-6 signature-row">
             <div class="well well-sm centered">{{news.created_date | limitTo:10}}</div>

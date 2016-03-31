@@ -163,7 +163,7 @@ $(document).ready(function () {
 
     //To highlight menu navigation buttons on click
     var addRoutingListeners = function () {
-        $('#category_grid').on('click', '.btn-menu', function () {
+        $('#news-type-grid').on('click', '.btn-menu', function () {
             $(this).parents(".dropdown").find('.selector').html($(this).text() + ' <span class="caret"></span>');
             $(this).parents(".dropdown").find('.selector').val($(this).data('value'));
             var category = $(this).attr("id");
@@ -204,7 +204,7 @@ $(document).ready(function () {
         data.forEach(function (item) {
             categories.push(item);
             var category = new categoryItem(item.category_id, item.name);
-            $('#category_grid').append(category.pureHtml());
+            $('#news-type-grid').append(category.pureHtml());
         });
 
         //Highlight first menu tab
