@@ -7,4 +7,5 @@ newsPortalApp.controller('listOfNewsController', function ($scope, $routeParams,
         }, function (data) {
             $scope.listOfNews = data;
         });
+
 });

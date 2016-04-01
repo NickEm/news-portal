@@ -1,6 +1,6 @@
 <div class="col-md-12 news-block" ng-if="listOfNews" ng-repeat="news in listOfNews | filter:searchModel.search">
     <div>
-        <a href="{{news.main_image}}" data-lightbox="image_{{news.news_id}}">
+        <a href="{{news.main_image}}" data-lightbox="image-{{news.news_id}}">
             <img ng-src="{{news.main_image}}" class="img-responsive pull-left image-container"/>
         </a>
         <h3>
