@@ -32,7 +32,7 @@ Constant
 --> Value
 Template
 
-
+Think about clear routing
 Delete action
 Edit
 Show modal
@@ -42,6 +42,8 @@ Think about redirect in case of typed url
 Repair lighbox
 Changes to Controller As
 Case insensative
+Change singletons to use param in brackets
+Make module as variable in each singletons
 
 Issue understood:
 Use directive within controller to represent different region content in the single view. Directive has own scope and own little view.
