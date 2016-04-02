@@ -1,35 +1,27 @@
-newsPortalApp.service('newsService', function ($http, $q, CONTENT_API) {
-    var service = {};
-    service.getNews = function (newsType, newsId) {
-        if (newsType) {
-            if (newsId) {
-                return makeHttpCallForNews($http, $q, CONTENT_API.NEWS + newsType + "/" + newsId);
+(function () {
+
+    var app = angular.module('newsPortalApp');
+
+    //Refactor with incorrect news
+    app.service('newsService', ['$q', 'httpGetFactory', 'CONTENT_API', function ($q, httpGetFactory, CONTENT_API) {
+        var service = {};
+        service.getNews = function (newsType, newsId) {
+            if (newsType) {
+                if (newsId) {
+                    return httpGetFactory.execute(CONTENT_API.NEWS + newsType + "/" + newsId);
+                } else {
+                    return httpGetFactory.execute(CONTENT_API.NEWS + newsType);
+                }
             } else {
-                return makeHttpCallForNews($http, $q, CONTENT_API.NEWS + newsType);
+                //TODO also we could implement error message
+                var deferResult = $q.defer();
+                deferResult.reject();
+                return deferResult.promise;
             }
-        } else {
-            //TODO also we could implement error message
-            var deferResult = $q.defer();
-            deferResult.reject(responce);
-            return deferResult.promise;
-        }
-    };
-    return service;
-});
+        };
+        return service;
 
+    }]);
 
-var makeHttpCallForNews = function($http, $q, url) {
-    var defer = $q.defer();
-    $http.get(url)
-        .then(
-            function(response){
-                console.log('News are loaded successfully.');
-                defer.resolve(response.data);
-            },
-            function(response){
-                console.log('Error during loading news.');
-                defer.reject();
-            }
-        );
-    return defer.promise;
-};
+}());
+

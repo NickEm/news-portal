@@ -1,4 +1,6 @@
-newsPortalApp.controller('detailsNewsController', function($scope, $routeParams, newsService) {
+var app = angular.module('newsPortalApp');
+
+app.controller('detailsNewsController', function($scope, $routeParams, newsService) {
     $scope.news = {};
 
     newsService.getNews($routeParams.type, $routeParams.newsId).then(
