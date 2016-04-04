@@ -30,7 +30,7 @@ Provider
 --> Factory
 Constant
 --> Value
-Template
+Template8
 
 Think about clear routing
 Delete action
