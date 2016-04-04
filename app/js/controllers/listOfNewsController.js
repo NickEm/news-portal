@@ -1,13 +1,18 @@
-var app = angular.module('newsPortalApp');
+(function () {
 
-app.controller('listOfNewsController', function ($scope, $routeParams, newsService) {
-    $scope.listOfNews = [];
+    var app = angular.module('newsPortalApp');
 
-    newsService.getNews($routeParams.type).then(
-        function (data) {
-            $scope.listOfNews = data;
-        }, function (data) {
-            $scope.listOfNews = data;
-        });
+    app.controller('listOfNewsController', ['$routeParams', 'newsService', function ($routeParams, newsService) {
+        var self = this;
+        self.listOfNews = [];
 
-});
+        newsService.getNews($routeParams.type).then(
+            function (data) {
+                self.listOfNews = data;
+            }, function (data) {
+                self.listOfNews = data;
+            });
+
+    }]);
+
+}());

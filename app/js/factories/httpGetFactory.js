@@ -9,11 +9,9 @@
                 $http.get(url)
                     .then(
                         function (response) {
-                            console.log('Call executed successfully.');
                             defer.resolve(response.data);
                         },
                         function (response) {
-                            console.log('Error during call.');
                             defer.reject();
                         }
                     );

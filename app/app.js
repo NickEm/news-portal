@@ -5,11 +5,11 @@ newsPortalApp.config(
         $routeProvider
             .when('/news/:type/:newsId', {
                 templateUrl: 'templates/news/detailsNews.htm',
-                controller: 'detailsNewsController'
+                controller: 'detailNewsController as detailNewsCtrl'
             })
             .when('/news/:type', {
                 templateUrl: 'templates/news/listOfNews.htm',
-                controller: 'listOfNewsController'
+                controller: 'listOfNewsController as listOfNewsCtrl'
             })
             .otherwise({
                 redirectTo: '/news/nature'

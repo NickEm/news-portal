@@ -9,11 +9,28 @@
             scope: {},
             templateUrl: '/app/templates/news/comments.htm',
             link: function (scope) {
-                httpGetFactory.execute('http://private-a5cdd5-newsportal.apiary-mock.com/news/nature/1/comments').then(function (data) {
-                    scope.comments = data;
+
+                scope.addComment = function() {
+                    debugger;
+                    scope.comments.push({
+                        description: scope.commentDescription,
+                        author: "Chris Brown",
+                        created_date: new Date()
+                    });
+
+                    scope.commentDescription = "";
+                };
+
+                scope.$on('commentAreOpened', function (event, data) {
+                    httpGetFactory.execute('http://private-a5cdd5-newsportal.apiary-mock.com/news/nature/1/comments')
+                        .then(function (data) {
+                            console.log("Comments are loaded");
+                            scope.comments = data;
+                        });
                 });
             }
         };
 
     }]);
+
 }());

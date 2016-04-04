@@ -1,6 +1,6 @@
 <div class="col-md-12 news-block">
     <div>
-        <img ng-src="{{news.main_image}}" class="img-responsive pull-left image-container"/>
+        <img ng-src="{{detailNewsCtrl.news.main_image}}" class="img-responsive pull-left image-container"/>
 
         <div class="pull-right">
             <div>
@@ -17,8 +17,8 @@
                 </a>
             </div>
         </div>
-        <h3>{{news.title}}</h3>
-        {{news.description}}
+        <h3>{{detailNewsCtrl.news.title}}</h3>
+        {{detailNewsCtrl.news.description}}
     </div>
 
     <div id="image-carousel" class="mt15 carousel slide" data-ride="carousel">
@@ -29,26 +29,29 @@
             <li data-target="#image-carousel" data-slide-to="3"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
-            <div class="item" ng-class="{active: $index === 0}" ng-repeat="image in news.images"><img ng-src="{{image.image_url}}"></div>
+            <div class="item" ng-class="{active: $index === 0}" ng-repeat="image in detailNewsCtrl.news.images"><img ng-src="{{image.image_url}}"></div>
         </div>
     </div>
 
     <div class="mt15">
-        <video controls="" width="100%" src="{{news.video | trustUrl}}"></video>
+        <video controls="" width="100%" src="{{detailNewsCtrl.news.video | trustUrl}}"></video>
     </div>
 
     <div class="row mt15">
         <div class="col-md-3 col-md-offset-6 col-xs-6">
-            <div class="well well-sm centered cursor-pointer" popover-title="Author" uib-popover="{{news.author.description}}">{{news.author.name}}</div>
+            <div class="well well-sm centered cursor-pointer" popover-title="Author" uib-popover="{{detailNewsCtrl.news.author.description}}">{{detailNewsCtrl.news.author.name}}</div>
         </div>
-        <div class="col-md-3 col-xs-6 well well-sm centered">{{news.created_date}}</div>
+        <div class="col-md-3 col-xs-6 well well-sm centered">{{detailNewsCtrl.news.created_date}}</div>
     </div>
 
     <div>
         <uib-accordion>
+            <!--<uib-accordion-group is-open="status.open">-->
             <uib-accordion-group is-open="status.open">
                 <uib-accordion-heading>
-                    Comments! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                    <div ng-click="detailNewsCtrl.openComments(!status.open)">
+                        Comments! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                    </div>
                 </uib-accordion-heading>
                 <div comment-dir></div>
             </uib-accordion-group>

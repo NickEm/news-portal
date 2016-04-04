@@ -1,6 +1,20 @@
 <div class="col-md-12 comment-block" ng-repeat="comment in comments">
-        <div class="col-md-3"><a>{{comment.author}}</a></div>
-        <div class="col-md-3">{{comment.created_date}}</div>
-        <div class="col-md-12 comment-desc">{{comment.description}}</div>
+    <div class="col-md-3"><a>{{comment.author}}</a></div>
+    <div class="col-md-3">{{comment.created_date | date:'yyyy-MM-dd HH:mm'}}</div>
+    {{Date.now() | date:'dd.MM.yyyy HH:mm:ss'}}
+    <div class="col-md-12 comment-desc">{{comment.description}}</div>
+</div>
+
+<div class="col-md-12 comment-container">
+    <div class="form-group">
+        <div class="alert alert-info">
+            <span class="glyphicon glyphicon-info-sign"></span>
+            Here you can show your emotions or feeling about this post.
+        </div>
+        <textarea class="form-control" rows="5" ng-model="commentDescription"></textarea>
+    </div>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-primary" ng-click="addComment()">Send</button>
+    </div>
 </div>
 

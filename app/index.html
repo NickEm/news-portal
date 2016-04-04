@@ -29,7 +29,7 @@
     <!--other functional files-->
     <script src="js/controllers/newsAppController.js"></script>
     <script src="js/controllers/listOfNewsController.js"></script>
-    <script src="js/controllers/detailsNewsController.js"></script>
+    <script src="js/controllers/detailNewsController.js"></script>
 
     <script src="js/filters/trustUrl.js"></script>
 
@@ -102,24 +102,29 @@
         </nav>
 
 
-            <div class="modal fade bs-example-modal-sm" id="deleteNewsModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="modalLabel">Delete news</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="alert alert-danger centered" role="alert">Do you really want to delete this news?<br> You will not be able to restore it.</div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" ng-click="deleteNews(1)">Delete</button>
-                        </div>
+    <div class="modal fade bs-example-modal-sm" id="deleteNewsModal" tabindex="-1" role="dialog"
+         aria-labelledby="modalLabel">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel">Delete news</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger centered" role="alert">
+                        Do you really want to delete this news?
+                        <br>
+                        You will not be able to restore it later.
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" ng-click="deleteNews(1)">Delete</button>
+                </div>
             </div>
+        </div>
+    </div>
 
 <!--    <div ng-controller="listOfNewsController">
         <div ng-include="'templates/listOfNews.htm'"></div>
