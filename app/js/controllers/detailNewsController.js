@@ -5,6 +5,7 @@
     app.controller('detailNewsController', ['$scope', '$routeParams', 'newsService', function ($scope, $routeParams, newsService) {
         var self = this;
         self.news = {};
+        self.showEditModal = false;
 
         newsService.getNews($routeParams.type, $routeParams.newsId).then(
             function (data) {
@@ -14,10 +15,15 @@
             });
 
         self.openComments = function (state) {
-            if (state) {
-                $scope.$broadcast('commentAreOpened');
+            if (!state) {
+                $scope.$broadcast('openComments');
             }
         };
+
+        self.toggleEditModal = function(){
+            self.showEditModal = !self.showEditModal;
+        };
+
 
     }]);
 

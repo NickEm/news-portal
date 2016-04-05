@@ -6,14 +6,15 @@
             <div>
                 <!--TODO: Implement remove-->
                 <a data-toggle="modal" data-target="#deleteNewsModal" class="cursor-pointer">
-                            <span class="glyphicon glyphicon-remove" data-original-title="Remove news" data-toggle="tooltip" data-placement="left" tooltip-dir></span>
+                    <span class="glyphicon glyphicon-remove" data-original-title="Remove news" data-toggle="tooltip"
+                          data-placement="left" tooltip-dir></span>
                 </a>
             </div>
             <div>
                 <!--TODO: Implement edit-->
-                <a data-toggle="modal" data-target="#editNewsModal" class="cursor-pointer">
-                            <span class="glyphicon glyphicon-pencil" data-original-title="Edit news"
-                                  data-toggle="tooltip" data-placement="left" tooltip-dir></span>
+                <a class="cursor-pointer" ng-click="detailNewsCtrl.toggleEditModal()">
+                    <span class="glyphicon glyphicon-pencil" data-original-title="Edit news" data-toggle="tooltip"
+                          data-placement="left" tooltip-dir></span>
                 </a>
             </div>
         </div>
@@ -49,7 +50,7 @@
             <!--<uib-accordion-group is-open="status.open">-->
             <uib-accordion-group is-open="status.open">
                 <uib-accordion-heading>
-                    <div ng-click="detailNewsCtrl.openComments(!status.open)">
+                    <div ng-click="detailNewsCtrl.openComments(status.open)">
                         Comments! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                     </div>
                 </uib-accordion-heading>
@@ -57,5 +58,30 @@
             </uib-accordion-group>
         </uib-accordion>
     </div>
+
+    <div title="Login form" visible="detailNewsCtrl.showEditModal" edit-news-modal-dir>
+        <div class="form-group">
+            <label for="categories">News Category:</label>
+            <select class="form-control" id="categories"></select>
+        </div>
+        <div class="form-group">
+            <label for="edit_title">Title:</label>
+            <input type="text" class="form-control" id="edit_title">
+        </div>
+        <div class="form-group">
+            <label for="edit_description">Description:</label>
+            <textarea class="form-control" id="edit_description" rows="10"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="edit_author">Author:</label>
+            <input type="text" class="form-control" id="edit_author">
+        </div>
+        <div class="form-group">
+            <label for="edit_video_url">Video:</label>
+            <input type="text" class="form-control" id="edit_video_url">
+        </div>
+    </div>
+
+</div>
 
 </div>

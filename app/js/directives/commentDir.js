@@ -21,7 +21,7 @@
                     scope.commentDescription = "";
                 };
 
-                scope.$on('commentAreOpened', function (event, data) {
+                scope.$on('openComments', function (event, data) {
                     httpGetFactory.execute('http://private-a5cdd5-newsportal.apiary-mock.com/news/nature/1/comments')
                         .then(function (data) {
                             console.log("Comments are loaded");

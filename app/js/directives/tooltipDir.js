@@ -3,6 +3,7 @@
     var app = angular.module('newsPortalApp');
 
     app.directive('tooltipDir', function () {
+
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -13,6 +14,7 @@
                 });
             }
         };
+
     });
 
 }());
