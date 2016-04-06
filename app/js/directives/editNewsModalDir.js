@@ -5,16 +5,23 @@
     app.directive('editNewsModalDir', function () {
 
         return {
-            restrict:       'A',
+            restrict:       'E',
             templateUrl:    '/app/templates/news/editNewsModal.htm',
             transclude:     true,
             replace:        true,
-            scope:          true,
-            link: function (scope, element, attrs) {
+            //scope:          true,
+            scope: {
+                news:       "=",
+                visible:    "="
+            },
+            link: function (scope, element) {
+                debugger;
                 console.log('Smth in link of edit dir');
-                scope.title = attrs.title;
+                console.log("Visible: " + scope.visible);
+                scope.visible = true;
 
-                scope.$watch(attrs.visible, function(value){
+                scope.$watch(scope.visible, function(value){
+                    console.log('Inside watcher');
                     if(value == true)
                         $(element).modal('show');
                     else
@@ -22,14 +29,16 @@
                 });
 
                 $(element).on('shown.bs.modal', function(){
+                    console.log('On modal show');
                     scope.$apply(function(){
-                        scope.$parent[attrs.visible] = true;
+                        scope.visible = true;
                     });
                 });
 
                 $(element).on('hidden.bs.modal', function(){
+                    console.log('On modal hide');
                     scope.$apply(function(){
-                        scope.$parent[attrs.visible] = false;
+                        scope.visible = false;
                     });
                 });
             }

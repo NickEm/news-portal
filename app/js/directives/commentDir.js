@@ -11,7 +11,6 @@
             link: function (scope) {
 
                 scope.addComment = function() {
-                    debugger;
                     scope.comments.push({
                         description: scope.commentDescription,
                         author: "Chris Brown",

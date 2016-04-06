@@ -21,6 +21,7 @@
         };
 
         self.toggleEditModal = function(){
+            console.log('Clicked edit button');
             self.showEditModal = !self.showEditModal;
         };
 

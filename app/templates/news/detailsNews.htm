@@ -59,11 +59,7 @@
         </uib-accordion>
     </div>
 
-    <div title="Login form" visible="detailNewsCtrl.showEditModal" edit-news-modal-dir>
-        <div class="form-group">
-            <label for="categories">News Category:</label>
-            <select class="form-control" id="categories"></select>
-        </div>
+    <edit-news-modal-dir news="detailNewsCtrl.news" visible="detailNewsCtrl.showEditModal">
         <div class="form-group">
             <label for="edit_title">Title:</label>
             <input type="text" class="form-control" id="edit_title">
@@ -80,7 +76,10 @@
             <label for="edit_video_url">Video:</label>
             <input type="text" class="form-control" id="edit_video_url">
         </div>
-    </div>
+    </edit-news-modal-dir>
+
+<!--    <edit-news-modal-dir news="detailNewsCtrl.news" visible="detailNewsCtrl.showEditModal">
+    </edit-news-modal-dir>-->
 
 </div>
 
