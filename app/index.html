@@ -75,7 +75,7 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
+                        <li ng-if="appCtrl.loggedIn" class="dropdown">
                             <a class="dropdown-toggle cursor-pointer" data-toggle="dropdown">
                                 <span class="glyphicon glyphicon-user"></span> My account
                             </a>
@@ -86,8 +86,12 @@
                                 </li>
                                 <li><a href="#"><span class="glyphicon glyphicon-qrcode"></span> Share</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-off"></span> Sign out</a></li>
+                                <li><a class="cursor-pointer" ng-click="appCtrl.logOff()"><span class="glyphicon glyphicon-off"></span> Sign out</a></li>
                             </ul>
+                        </li>
+
+                        <li ng-if="!appCtrl.loggedIn">
+                            <a class="cursor-pointer" ng-click="appCtrl.showLoginModal()"><span class="glyphicon glyphicon-off"></span> Log in</a>
                         </li>
                     </ul>
 
@@ -100,6 +104,87 @@
                 </div>
             </div>
         </nav>
+
+        <!--What is novalidate-->
+<!--        <form name="userForm" ng-submit="appCtrl.login()" novalidate>
+
+            &lt;!&ndash; NAME &ndash;&gt;
+            <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" ng-model="user.name" required>
+                <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
+            </div>
+
+            &lt;!&ndash; USERNAME &ndash;&gt;
+            <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+                <label>Username</label>
+                <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
+                <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+                <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+            </div>
+
+            &lt;!&ndash; EMAIL &ndash;&gt;
+            <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" ng-model="user.email">
+                <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+            </div>
+
+            &lt;!&ndash; PASSWORD &ndash;&gt;
+            <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" ng-model="user.name" required>
+                <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Submit</button>
+
+        </form>-->
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="userForm" ng-submit="appCtrl.login(user)" novalidate>
+
+                    <div class="modal-header">
+                        <button type="button" class="close" ng-click="appCtrl.closeLoginModal(user)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+                            <label>Username</label>
+                            <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8" required>
+                            <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+                            <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+                            <p ng-show="!userForm.username.$pristine && userForm.username.$error.required" class="help-block">Password is required.</p>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control" ng-model="user.email" required>
+                            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine && !userForm.email.$error.required" class="help-block">Enter a valid email.</p>
+                            <p ng-show="!userForm.email.$pristine && userForm.email.$error.required" class="help-block">Email is required</p>
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control" ng-model="user.password" ng-minlength="3" required>
+                            <p ng-show="!userForm.password.$error.required && userForm.password.$error.minlength" class="help-block">Password is too short.</p>
+                            <p ng-show="!userForm.password.$pristine && userForm.password.$error.required" class="help-block">Password is required.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Login</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
 
     <div>
         <ng-view>

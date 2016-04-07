@@ -40,7 +40,7 @@
                 $("#deleteNewsModal").modal('hide');
                 $timeout(function() {
                     $location.path('/news/' + news.type);
-                }, 1);
+                }, 200);
             };
 
             $("#deleteNewsModal").on('hidden.bs.modal', function(){
