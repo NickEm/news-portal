@@ -3,7 +3,7 @@
     var app = angular.module('newsPortalApp');
 
     //TODO: Think about controller as syntax.
-    app.controller('newsAppController', ['$scope', function ($scope) {
+    app.controller('newsAppController', ['$scope', '$localStorage', function ($scope, $localStorage) {
         var self = this;
         self.loggedIn = false;
 
@@ -16,16 +16,23 @@
         };
 
         self.closeLoginModal = function (user) {
-
-            console.log("Close is called ");
-            console.log(user);
-            self.userForm = {};
-            user = {};
+            //TODO: Think how to clear that 'user' data
             $("#loginModal").modal('hide');
         };
 
-        self.login = function (user) {
-            console.log(user);
+        self.logIn = function (user) {
+            $localStorage.authenticatedUser = {
+                name: user.username,
+                email: user.email,
+                password: user.password
+            };
+            self.loggedIn = true;
+            $("#loginModal").modal('hide');
+        };
+
+        self.logOut = function () {
+            self.loggedIn = false;
+            $localStorage.$reset();
         };
 
     }]);

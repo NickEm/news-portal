@@ -29,14 +29,18 @@ Service
 Provider
 Factory
 Constant
---> Value
-Template8
+--> Value (I didn't find difference between the value and constants)
+Template
 
 Think about clear routing
-Add validation
+Fix removing from login form
 Think about different environments
 Think about redirect in case of typed url
-Case insensetive
+Case insensitive
+Fix background image
+Fix controller as in main controller
+Use login data to leave comments and edit
+
 
 Issue understood:
 Use directive within controller to represent different region content in the single view. Directive has own scope and own little view.

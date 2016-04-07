@@ -21,6 +21,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-animate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.5/ui-bootstrap.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.5/ui-bootstrap-tpls.js"></script>
+    <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+
     <script src="lib/lightbox/js/lightbox.js"></script>
 
     <!--main application file-->
@@ -86,7 +88,7 @@
                                 </li>
                                 <li><a href="#"><span class="glyphicon glyphicon-qrcode"></span> Share</a></li>
                                 <li class="divider"></li>
-                                <li><a class="cursor-pointer" ng-click="appCtrl.logOff()"><span class="glyphicon glyphicon-off"></span> Sign out</a></li>
+                                <li><a class="cursor-pointer" ng-click="appCtrl.logOut()"><span class="glyphicon glyphicon-off"></span> Sign out</a></li>
                             </ul>
                         </li>
 
@@ -105,46 +107,10 @@
             </div>
         </nav>
 
-        <!--What is novalidate-->
-<!--        <form name="userForm" ng-submit="appCtrl.login()" novalidate>
-
-            &lt;!&ndash; NAME &ndash;&gt;
-            <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
-                <label>Name</label>
-                <input type="text" name="name" class="form-control" ng-model="user.name" required>
-                <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
-            </div>
-
-            &lt;!&ndash; USERNAME &ndash;&gt;
-            <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8">
-                <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
-                <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
-            </div>
-
-            &lt;!&ndash; EMAIL &ndash;&gt;
-            <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control" ng-model="user.email">
-                <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
-            </div>
-
-            &lt;!&ndash; PASSWORD &ndash;&gt;
-            <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
-                <label>Name</label>
-                <input type="text" name="name" class="form-control" ng-model="user.name" required>
-                <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
-            </div>
-
-            <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Submit</button>
-
-        </form>-->
-
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form name="userForm" ng-submit="appCtrl.login(user)" novalidate>
+                <form name="userForm" ng-submit="appCtrl.logIn(user)" novalidate>
 
                     <div class="modal-header">
                         <button type="button" class="close" ng-click="appCtrl.closeLoginModal(user)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -155,10 +121,10 @@
 
                         <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
                             <label>Username</label>
-                            <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="8" required>
+                            <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="3" ng-maxlength="10" required>
                             <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
                             <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
-                            <p ng-show="!userForm.username.$pristine && userForm.username.$error.required" class="help-block">Password is required.</p>
+                            <p ng-show="!userForm.username.$pristine && userForm.username.$error.required" class="help-block">Username is required.</p>
                         </div>
 
                         <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">

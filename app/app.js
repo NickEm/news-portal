@@ -1,4 +1,4 @@
-var newsPortalApp = angular.module('newsPortalApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
+var newsPortalApp = angular.module('newsPortalApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngStorage']);
 
 newsPortalApp.config(
     function ($routeProvider) {

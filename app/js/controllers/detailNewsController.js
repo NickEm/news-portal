@@ -2,9 +2,10 @@
 
     var app = angular.module('newsPortalApp');
 
-    app.controller('detailNewsController', ['$scope', '$routeParams', '$location', '$timeout', 'newsService',
-        function ($scope, $routeParams, $location, $timeout, newsService) {
+    app.controller('detailNewsController', ['$scope', '$routeParams', '$location', '$timeout', 'newsService', '$localStorage',
+        function ($scope, $routeParams, $location, $timeout, newsService, $localStorage) {
 
+            console.log($localStorage.authenticatedUser);
             var self = this;
             self.news = {};
             self.showEditModal = false;
