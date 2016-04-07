@@ -2,7 +2,7 @@
 
     var app = angular.module('newsPortalApp');
 
-    app.directive('commentDir', ['httpGetFactory', function (httpGetFactory) {
+    app.directive('commentDir', ['httpGetFactory', 'CONTENT_API', function (httpGetFactory, CONTENT_API) {
 
         return {
             restrict: 'A',
@@ -20,10 +20,9 @@
                     scope.commentDescription = "";
                 };
 
-                scope.$on('openComments', function (event, data) {
-                    httpGetFactory.execute('http://private-a5cdd5-newsportal.apiary-mock.com/news/nature/1/comments')
+                scope.$on('openComments', function (event, newsType, newsId) {
+                    httpGetFactory.execute(CONTENT_API.NEWS + "/" + newsType + "/" + newsId + "/comments")
                         .then(function (data) {
-                            console.log("Comments are loaded");
                             scope.comments = data;
                         });
                 });

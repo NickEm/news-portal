@@ -27,29 +27,23 @@ Directive
 Filter
 Service
 Provider
---> Factory
+Factory
 Constant
 --> Value
 Template8
 
 Think about clear routing
-Delete action
-Edit
-Show modal
 Add validation
 Think about different environments
 Think about redirect in case of typed url
-Changes to Controller As
-Case insensative
-Change singletons to use param in brackets
-Use combiner Url in directive
+Case insensetive
 
 Issue understood:
 Use directive within controller to represent different region content in the single view. Directive has own scope and own little view.
 Factory returns an function. Service return an object.
 
 [Optional]
-@component, @directive, templates, DI
+Angular 2.0 -> @component, @directive, templates, DI
 -------------------------------------
 
 <--+ Strangest issues +-->

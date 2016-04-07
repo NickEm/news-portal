@@ -8,9 +8,9 @@
         service.getNews = function (newsType, newsId) {
             if (newsType) {
                 if (newsId) {
-                    return httpGetFactory.execute(CONTENT_API.NEWS + newsType + "/" + newsId);
+                    return httpGetFactory.execute(CONTENT_API.NEWS + "/" + newsType + "/" + newsId);
                 } else {
-                    return httpGetFactory.execute(CONTENT_API.NEWS + newsType);
+                    return httpGetFactory.execute(CONTENT_API.NEWS + "/" + newsType);
                 }
             } else {
                 //TODO also we could implement error message
