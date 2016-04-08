@@ -1,0 +1,23 @@
+<div class="modal fade" id="deleteNewsModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="cancelDelete()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Delete news: {{title}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger centered" role="alert">
+                    Do you really want to delete this news?
+                    <br>
+                    You will not be able to restore it later.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="cancelDelete()">Cancel</button>
+                <button type="button" class="btn btn-primary" ng-click="deleteNews()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

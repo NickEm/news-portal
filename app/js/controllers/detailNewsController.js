@@ -5,11 +5,8 @@
     app.controller('detailNewsController', ['$scope', '$routeParams', '$location', '$timeout', 'newsService', '$localStorage',
         function ($scope, $routeParams, $location, $timeout, newsService, $localStorage) {
 
-            console.log($localStorage.authenticatedUser);
             var self = this;
             self.news = {};
-            self.showEditModal = false;
-            self.showDeleteModal = false;
             self.shelveNews = {};
 
             newsService.getNews($routeParams.type, $routeParams.newsId).then(
@@ -25,32 +22,12 @@
                 }
             };
 
-            self.toggleDeleteModal = function(){
-                self.showDeleteModal = true;
-                $("#deleteNewsModal").modal('show');
+            self.showDeleteModal = function(){
+                console.log("In show of controller");
+                $scope.$broadcast('showDeleteModal');
             };
 
-            self.cancelDelete = function(news) {
-                $("#deleteNewsModal").modal('hide');
-                self.showDeleteModal = false;
-            };
-
-            self.deleteNews = function(news) {
-                //TODO: Send request to backend to delete news using news_id.
-                self.showDeleteModal = false;
-                $("#deleteNewsModal").modal('hide');
-                $timeout(function() {
-                    $location.path('/news/' + news.type);
-                }, 200);
-            };
-
-            $("#deleteNewsModal").on('hidden.bs.modal', function(){
-                self.showDeleteModal = false;
-            });
-
-
-            self.toggleEditModal = function(){
-                self.showEditModal = true;
+            self.showEditModal = function(){
                 angular.copy(self.news, self.shelveNews);
                 $("#editNewsModal").modal('show');
             };
@@ -65,27 +42,23 @@
                 $("#editNewsModal").modal('hide');
             };
 
-            $("#editNewsModal")
-                .on('shown.bs.modal', function () {
-                    if (self.news.images && self.news.images.length > 0) {
+            $("#editNewsModal").on('shown.bs.modal', function () {
+                if (self.news.images && self.news.images.length > 0) {
 
-                        var initialPreviewImages = [];
+                    var initialPreviewImages = [];
 
-                        for (var i = 0; i < self.news.images.length; i++) {
-                            initialPreviewImages.push('<img src="' + self.news.images[i].image_url +'" class="file-preview-image">');
-                        }
-
-                        var imageConfig = {
-                            initialPreview: initialPreviewImages,
-                            overwriteInitial: false,
-                            initialCaption: "Already uploaded images"
-                        };
-                        $("#edit_images").fileinput(imageConfig);
+                    for (var i = 0; i < self.news.images.length; i++) {
+                        initialPreviewImages.push('<img src="' + self.news.images[i].image_url + '" class="file-preview-image">');
                     }
-                })
-                .on('hidden.bs.modal', function () {
-                    self.showEditModal = false;
-                });
+
+                    var imageConfig = {
+                        initialPreview: initialPreviewImages,
+                        overwriteInitial: false,
+                        initialCaption: "Already uploaded images"
+                    };
+                    $("#edit_images").fileinput(imageConfig);
+                }
+            });
 
     }]);
 

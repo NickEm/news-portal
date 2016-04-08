@@ -36,6 +36,7 @@ Think about clear routing
 Think about different environments
 Think about redirect in case of typed url
 Case insensitive
+-----------------
 Fix background image
 Migrate to npm install
 Write some test
