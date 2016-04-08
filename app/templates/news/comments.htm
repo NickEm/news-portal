@@ -6,15 +6,23 @@
 </div>
 
 <div class="col-md-12 comment-container">
-    <div class="form-group">
-        <div class="alert alert-info">
-            <span class="glyphicon glyphicon-info-sign"></span>
-            Here you can show your emotions or feeling about this post.
+    <div ng-if="user">
+        <div class="form-group">
+            <div class="alert alert-info">
+                <span class="glyphicon glyphicon-info-sign"></span>
+                Here you can show your emotions or feeling about this post.
+            </div>
+            <textarea class="form-control" rows="5" ng-model="commentDescription"></textarea>
         </div>
-        <textarea class="form-control" rows="5" ng-model="commentDescription"></textarea>
+        <div class="pull-right">
+            <button type="submit" class="btn btn-primary" ng-click="addComment()">Send</button>
+        </div>
     </div>
-    <div class="pull-right">
-        <button type="submit" class="btn btn-primary" ng-click="addComment()">Send</button>
+    <div ng-if="!user">
+        <div class="alert alert-warning">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            I you want to leave a comment, please log in.
+        </div>
     </div>
 </div>
 

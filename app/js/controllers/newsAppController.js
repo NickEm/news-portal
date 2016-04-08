@@ -5,7 +5,7 @@
     //TODO: Think about controller as syntax.
     app.controller('newsAppController', ['$scope', '$localStorage', function ($scope, $localStorage) {
         var self = this;
-        self.loggedIn = false;
+        self.loggedIn = !!$localStorage.authenticatedUser;
 
         self.changeNavigation = function ($event) {
             $($event.target).parents(".dropdown").find('.cursor-pointer').html($($event.target).text() + ' <span class="caret"></span>');

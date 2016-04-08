@@ -2,7 +2,7 @@
     <div>
         <img ng-src="{{detailNewsCtrl.news.main_image}}" class="img-responsive pull-left image-container"/>
 
-        <div class="pull-right">
+        <div class="pull-right" ng-if="appCtrl.loggedIn">
             <div>
                 <a class="cursor-pointer" ng-click="detailNewsCtrl.toggleDeleteModal()">
                     <span class="glyphicon glyphicon-remove" data-original-title="Remove news" data-toggle="tooltip"

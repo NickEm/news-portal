@@ -2,7 +2,7 @@
 
     var app = angular.module('newsPortalApp');
 
-    app.directive('commentDir', ['httpGetFactory', 'CONTENT_API', function (httpGetFactory, CONTENT_API) {
+    app.directive('commentDir', ['httpGetFactory', '$localStorage', 'CONTENT_API', function (httpGetFactory, $localStorage, CONTENT_API) {
 
         return {
             restrict: 'A',
@@ -13,7 +13,7 @@
                 scope.addComment = function() {
                     scope.comments.push({
                         description: scope.commentDescription,
-                        author: "Chris Brown",
+                        author: scope.user.name,
                         created_date: new Date()
                     });
 
@@ -21,6 +21,7 @@
                 };
 
                 scope.$on('openComments', function (event, newsType, newsId) {
+                    scope.user = $localStorage.authenticatedUser;
                     httpGetFactory.execute(CONTENT_API.NEWS + "/" + newsType + "/" + newsId + "/comments")
                         .then(function (data) {
                             scope.comments = data;
