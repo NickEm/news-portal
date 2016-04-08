@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <link rel="stylesheet/less" href="css/main.less"/>
     <link rel="stylesheet" href="lib/lightbox/css/lightbox.css"/>
+    <link rel="stylesheet" href="lib/fileinput/css/fileinput.css"/>
 
     <!--libraries-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -24,6 +25,7 @@
     <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
 
     <script src="lib/lightbox/js/lightbox.js"></script>
+    <script src="lib/fileinput/js/fileinput.js"></script>
 
     <!--main application file-->
     <script src="app.js"></script>
@@ -90,7 +92,7 @@
                                 </li>
                                 <li><a href="#"><span class="glyphicon glyphicon-qrcode"></span> Share</a></li>
                                 <li class="divider"></li>
-                                <li><a class="cursor-pointer" ng-click="appCtrl.logOut()"><span class="glyphicon glyphicon-off"></span> Sign out</a></li>
+                                <li><a class="cursor-pointer" ng-click="appCtrl.logOut()"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
                             </ul>
                         </li>
 
@@ -115,7 +117,7 @@
                 <form name="userForm" ng-submit="appCtrl.logIn(user)" novalidate>
 
                     <div class="modal-header">
-                        <button type="button" class="close" ng-click="appCtrl.closeLoginModal(user)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="close" ng-click="appCtrl.closeLoginModal()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title">Login</h4>
                     </div>
 

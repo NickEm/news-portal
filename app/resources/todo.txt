@@ -33,14 +33,13 @@ Constant
 Template
 
 Think about clear routing
-Fix removing from login form
 Think about different environments
 Think about redirect in case of typed url
 Case insensitive
 Fix background image
-Fix controller as in main controller
-Use login data to leave comments and edit
-
+Migrate to npm install
+Write some test
+Break down details controller
 
 Issue understood:
 Use directive within controller to represent different region content in the single view. Directive has own scope and own little view.

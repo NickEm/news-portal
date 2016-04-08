@@ -65,9 +65,27 @@
                 $("#editNewsModal").modal('hide');
             };
 
-            $("#editNewsModal").on('hidden.bs.modal', function(){
-                self.showEditModal = false;
-            });
+            $("#editNewsModal")
+                .on('shown.bs.modal', function () {
+                    if (self.news.images && self.news.images.length > 0) {
+
+                        var initialPreviewImages = [];
+
+                        for (var i = 0; i < self.news.images.length; i++) {
+                            initialPreviewImages.push('<img src="' + self.news.images[i].image_url +'" class="file-preview-image">');
+                        }
+
+                        var imageConfig = {
+                            initialPreview: initialPreviewImages,
+                            overwriteInitial: false,
+                            initialCaption: "Already uploaded images"
+                        };
+                        $("#edit_images").fileinput(imageConfig);
+                    }
+                })
+                .on('hidden.bs.modal', function () {
+                    self.showEditModal = false;
+                });
 
     }]);
 

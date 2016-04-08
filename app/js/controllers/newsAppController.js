@@ -2,10 +2,12 @@
 
     var app = angular.module('newsPortalApp');
 
-    //TODO: Think about controller as syntax.
-    app.controller('newsAppController', ['$scope', '$localStorage', function ($scope, $localStorage) {
+    app.controller('newsAppController', ['$localStorage', function ($localStorage) {
         var self = this;
         self.loggedIn = !!$localStorage.authenticatedUser;
+        self.originUserForm = {
+
+        };
 
         self.changeNavigation = function ($event) {
             $($event.target).parents(".dropdown").find('.cursor-pointer').html($($event.target).text() + ' <span class="caret"></span>');
@@ -15,8 +17,7 @@
             $("#loginModal").modal('show');
         };
 
-        self.closeLoginModal = function (user) {
-            //TODO: Think how to clear that 'user' data
+        self.closeLoginModal = function () {
             $("#loginModal").modal('hide');
         };
 
