@@ -1,0 +1,38 @@
+<div class="modal fade" id="editNewsModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Edit news: {{shelveNews.title}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="edit_title">Title</label>
+                    <input id="edit_title" class="form-control" ng-model="shelveNews.title" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="edit_description">Description</label>
+                    <textarea id="edit_description" class="form-control" ng-model="shelveNews.description" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="edit_author">Author</label>
+                    <input id="edit_author" class="form-control" ng-model="shelveNews.author.name" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="edit_video_url">Video</label>
+                    <input id="edit_video_url" class="form-control" ng-model="shelveNews.video" type="text" >
+                </div>
+                <div class="form-group">
+                    <label for="edit_images">Images</label>
+                    <input id="edit_images" type="file" name="files" class="file-loading" multiple>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="cancelEdit()">Cancel</button>
+                <button type="button" class="btn btn-primary" ng-click="editNews(shelveNews)">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,9 +9,9 @@
             return {
                 restrict: 'E',
                 scope: {
-                    newsId:             "<",
-                    type:               "<",
-                    title:              "@"
+                    newsId: "<",
+                    type:   "<",
+                    title:  "@"
                 },
                 templateUrl: '/app/templates/news/deleteNewsModal.htm',
                 link: function (scope) {
