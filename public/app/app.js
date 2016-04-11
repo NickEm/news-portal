@@ -6,11 +6,11 @@
         function ($routeProvider) {
             $routeProvider
                 .when('/news/:type/:newsId', {
-                    templateUrl: 'templates/news/detailsNews.htm',
+                    templateUrl: 'app/templates/news/detailsNews.htm',
                     controller: 'detailNewsController as detailNewsCtrl'
                 })
                 .when('/news/:type', {
-                    templateUrl: 'templates/news/listOfNews.htm',
+                    templateUrl: 'app/templates/news/listOfNews.htm',
                     controller: 'listOfNewsController as listOfNewsCtrl'
                 })
                 .otherwise({
