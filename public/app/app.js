@@ -20,7 +20,8 @@
     );
 
     newsPortalApp.constant("CONTENT_API", {
-        "NEWS": "http://private-a5cdd5-newsportal.apiary-mock.com/news"
+        /*"NEWS": "http://private-a5cdd5-newsportal.apiary-mock.com/news"*/
+        "NEWS": "/news/"
     });
 
 }());

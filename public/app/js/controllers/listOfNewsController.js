@@ -7,10 +7,14 @@
         self.listOfNews = [];
 
         newsService.getNews($routeParams.type).then(
-            function (data) {
-                self.listOfNews = data;
-            }, function (data) {
-                self.listOfNews = data;
+            function (response) {
+                if(!jQuery.isEmptyObject(response.data)) {
+                    self.listOfNews = response.data;
+                } else {
+                    self.listOfNews = null;
+                }
+            }, function (response) {
+                /*TODO: Show some error message*/
             });
 
     }]);

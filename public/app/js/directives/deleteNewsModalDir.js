@@ -3,13 +3,13 @@
     var app = angular.module('newsPortalApp');
 
 
-    app.directive('deleteNewsModalDir', ['httpGetFactory', '$location', '$timeout',
-        function (httpGetFactory, $location, $timeout) {
+    app.directive('deleteNewsModalDir', ['$http', '$location', '$timeout', 'CONTENT_API',
+        function ($http, $location, $timeout, CONTENT_API) {
 
             return {
                 restrict: 'E',
                 scope: {
-                    newsId: "<",
+                    newsid: "<",
                     type:   "<",
                     title:  "@"
                 },
@@ -25,8 +25,10 @@
                     };
 
                     scope.deleteNews = function() {
-                        //TODO: Send request to backend to delete news using news_id.
+                        console.log(scope.newsid);
+                        console.log(scope.type);
                         $("#deleteNewsModal").modal('hide');
+                        $http.delete(CONTENT_API.NEWS + scope.newsid);
                         $timeout(function() {
                             $location.path('/news/' + scope.type);
                         }, 200);

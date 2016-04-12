@@ -17,16 +17,21 @@
                     <textarea id="edit_description" class="form-control" ng-model="shelveNews.description" rows="10"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="edit_author">Author</label>
-                    <input id="edit_author" class="form-control" ng-model="shelveNews.author.name" type="text">
-                </div>
-                <div class="form-group">
                     <label for="edit_video_url">Video</label>
                     <input id="edit_video_url" class="form-control" ng-model="shelveNews.video" type="text" >
                 </div>
                 <div class="form-group">
                     <label for="edit_images">Images</label>
                     <input id="edit_images" type="file" name="files" class="file-loading" multiple>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label for="edit_author_name">Author name</label>
+                    <input id="edit_author_name" class="form-control" ng-model="shelveNews.author.name" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="edit_author_description">Author description</label>
+                    <input id="edit_author_description" class="form-control" ng-model="shelveNews.author.description" type="text">
                 </div>
             </div>
             <div class="modal-footer">

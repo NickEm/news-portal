@@ -12,10 +12,10 @@
                 <span class="glyphicon glyphicon-info-sign"></span>
                 Here you can show your emotions or feeling about this post.
             </div>
-            <textarea class="form-control" rows="5" ng-model="commentDescription"></textarea>
+            <textarea class="form-control" rows="5" ng-model="description"/>
         </div>
         <div class="pull-right">
-            <button type="submit" class="btn btn-primary" ng-click="addComment()">Send</button>
+            <button type="submit" class="btn btn-primary" ng-click="addComment(description)">Send</button>
         </div>
     </div>
     <div ng-if="!user">

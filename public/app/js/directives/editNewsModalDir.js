@@ -2,7 +2,7 @@
 
     var app = angular.module('newsPortalApp');
 
-    app.directive('editNewsModalDir', function () {
+    app.directive('editNewsModalDir', ['$http', 'CONTENT_API', function ($http, CONTENT_API) {
 
         return {
             restrict: 'E',
@@ -24,8 +24,9 @@
                     $("#editNewsModal").modal('hide');
                 };
 
-                scope.editNews = function (news) {
+                scope.editNews = function () {
                     angular.copy(scope.shelveNews, scope.news);
+                    $http.put(CONTENT_API.NEWS + scope.shelveNews._id, scope.shelveNews);
                     $("#editNewsModal").modal('hide');
                 };
 
@@ -50,6 +51,6 @@
 
             }
         };
-    });
+    }]);
 
 }());
