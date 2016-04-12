@@ -1,12 +1,14 @@
 {
   "devDependencies": {
-    "express"         : "~4.6.1",
-    "body-parser"     : "~1.4.3",
-    "method-override" : "~2.1.1",
+    "body-parser"               : "~1.4.3",
+    "express"                   : "^4.13.4",
+    "method-override"           : "~2.1.1",
+    "mongojs"                   : "^2.3.0",
 
-    "jasmine": "^2.4.1",
-    "karma": "^0.13.22",
-    "karma-jasmine": "^0.3.8",
-    "karma-phantomjs-launcher": "^1.0.0"
+    "jasmine"                   : "^2.4.1",
+    "karma"                     : "^0.13.22",
+    "karma-jasmine"             : "^0.3.8",
+    "karma-phantomjs-launcher"  : "^1.0.0"
+
   }
 }
