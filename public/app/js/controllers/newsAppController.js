@@ -5,9 +5,6 @@
     app.controller('newsAppController', ['$localStorage', function ($localStorage) {
         var self = this;
         self.loggedIn = !!$localStorage.authenticatedUser;
-        self.originUserForm = {
-
-        };
 
         self.changeNavigation = function ($event) {
             $($event.target).parents(".dropdown").find('.cursor-pointer').html($($event.target).text() + ' <span class="caret"></span>');
