@@ -9,7 +9,6 @@
             scope: {},
             templateUrl: '/app/templates/news/comments.htm',
             link: function (scope) {
-                scope.description = "";
 
                 scope.addComment = function(description) {
                     scope.comments.push({

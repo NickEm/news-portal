@@ -18,8 +18,14 @@ module.exports = function(config) {
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'node_modules/angular-route/angular-route.js',
+      'node_modules/angular-animate/angular-animate.js',
+      'node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js',
+      'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
+      'node_modules/ngstorage/ngStorage.js',
+
       'public/app/app.js',
       'public/app/js/controllers/*.js',
+      'public/app/js/services/newsService.js',
       'public/app/test/**/*Spec.js'
     ],
 
@@ -61,7 +67,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['PhantomJS', 'Chrome'],
 
 
     // Continuous Integration mode

@@ -10,7 +10,11 @@
 
             newsService.getNews($routeParams.type, $routeParams.newsId).then(
                 function (response) {
-                    self.news = response.data[0];
+                    if(!jQuery.isEmptyObject(response.data)) {
+                        self.news = response.data[0];
+                    } else {
+                        self.news = null;
+                    }
                 }, function (response) {
                     //TODO: Show some error message
                 });

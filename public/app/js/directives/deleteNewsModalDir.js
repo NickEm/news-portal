@@ -25,8 +25,6 @@
                     };
 
                     scope.deleteNews = function() {
-                        console.log(scope.newsid);
-                        console.log(scope.type);
                         $("#deleteNewsModal").modal('hide');
                         $http.delete(CONTENT_API.NEWS + scope.newsid);
                         $timeout(function() {
